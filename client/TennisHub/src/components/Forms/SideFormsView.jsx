@@ -2,7 +2,7 @@ import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import FooterHomePage from "../FooterHomePage";
+import FormFooter from "./FormFooter";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
@@ -28,9 +28,9 @@ export default function SideForms() {
         }}
       />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <LoginForm />
-        {/* <RegisterForm /> */}
-        <FooterHomePage />
+        {/* <LoginForm /> */}
+        <RegisterForm />
+        <FormFooter />
       </Grid>
     </Grid>
   );
