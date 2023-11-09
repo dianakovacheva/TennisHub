@@ -1,0 +1,36 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 40%;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  color: #00000099;
+  /* background-color: #f8fafc; */
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    width: 100%;
+  }
+}
+
+.developerInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  text-align: center;
+}
+
+.developerInfo > span > a > img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.developerInfo > span {
+  line-height: 1.5rem;
+  padding: 10px 0;
+}
