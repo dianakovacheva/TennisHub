@@ -1,0 +1,66 @@
+/* Background image */
+.section-container {
+  background-image: url("./images/pageNotFound-BG.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  object-fit: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Content */
+.warningMessage {
+  margin-left: 5em;
+  position: absolute;
+  top: 3em;
+}
+
+@media screen and (max-width: 600px) {
+  .section-container {
+    background: #1976d2;
+  }
+
+  .warningMessage {
+    margin-left: 0;
+    max-width: 90%;
+  }
+}
+
+.heading {
+  color: #ffffff;
+  font-size: 13rem;
+  line-height: 1;
+  text-shadow: 1px 1px 2px #000000de;
+  margin: 0;
+  padding: 0;
+}
+
+.oops {
+  font-size: 4em;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px #000000de;
+}
+
+.text {
+  font-size: 1.5em;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px #000000de;
+  margin-bottom: 2em;
+}
+
+/* Button */
+.btn.btn-secondary.orange {
+  background-color: #fe6402;
+}
+
+.btn.btn-secondary.orange:hover {
+  background-color: #ee5100;
+}
