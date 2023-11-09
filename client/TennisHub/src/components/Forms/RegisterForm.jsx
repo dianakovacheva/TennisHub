@@ -110,7 +110,7 @@ export default function RegisterForm() {
         <Grid container justifyContent="center">
           <Grid item>
             <Link href="/login" variant="body2">
-              Already have an account? Login
+              Already have an account? Log in
             </Link>
           </Grid>
         </Grid>
