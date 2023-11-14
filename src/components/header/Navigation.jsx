@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-import Search from "./Search";
+import Search from "../Search";
 
 import NavigationCSS from "./Navigation.module.css";
 
