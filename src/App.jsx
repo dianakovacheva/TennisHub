@@ -1,9 +1,8 @@
-import "./App.css";
 import Navigation from "./components/header/Navigation";
 import Footer from "./components/footer/Footer";
-import SideForms from "./components/Forms/SideFormsView";
-import Home from "./components/Home";
-import PageNotFound from "./components/PageNotFound";
+import SideForms from "./components/formHolder/SideFormsView";
+import Home from "./components/home/Home";
+import PageNotFound from "./components/pageNotFound/PageNotFound";
 
 function App() {
   return (
