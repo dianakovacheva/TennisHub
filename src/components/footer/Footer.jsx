@@ -34,7 +34,7 @@ export default function StickyFooter() {
             <Link href="https://github.com/dianakovacheva/TennisHub">
               <img
                 className={FooterCSS.footerGithubMark}
-                src="../../../public/images/github-mark.svg"
+                src="/images/github-mark.svg"
                 alt="github-mark"
               />
             </Link>
