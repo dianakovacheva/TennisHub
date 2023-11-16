@@ -1,0 +1,49 @@
+.calendar-container {
+  height: 85vh;
+  max-width: 90%;
+  padding-top: 3em;
+  margin: auto;
+}
+
+.rbc-calendar * {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+/* Calendar Header*/
+.rbc-time-header {
+  background-color: #ededed;
+}
+
+.rbc-allday-cell {
+  display: none;
+}
+
+.rbc-header {
+  border-bottom: 0 !important;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px !important;
+}
+
+/* Time Slot */
+.rbc-events-container .rbc-event {
+  background-color: #1976d2;
+}
+
+.rbc-today {
+  background-color: #f7f7f7 !important;
+}
+
+.rbc-time-header-gutter {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rbc-time-header-gutter::after {
+  content: "Time";
+}
