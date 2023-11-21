@@ -1,68 +1,41 @@
+import * as request from "../lib/request";
+
 const userBaseUrl = "http://localhost:3000/api/auth";
 
 // Register
-export const register = async (firstName, lastName, email, password) => {
-  const settings = {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  };
+export const register = (firstName, lastName, email, password) => {
   try {
-    const response = await fetch(`${userBaseUrl}/register`, settings, {
+    const response = request.post(`${userBaseUrl}/register`, {
       firstName,
       lastName,
       email,
       password,
     });
-    console.log(response);
-    const result = await response.json();
-    // console.log(result);
-    const userData = Object.values(result);
-    // console.log(userData);
-    return userData;
+
+    return response;
   } catch (error) {
     throw new Error(error.message);
   }
 };
 
 // Log in
-export const login = async (email, password) => {
-  const settings = {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  };
+export const login = (email, password) => {
   try {
-    const response = await fetch(`${userBaseUrl}/login`, settings, {
+    const response = request.post(`${userBaseUrl}/login`, {
       email,
       password,
     });
 
-    const result = await response.json();
-    const loginData = Object.values(result);
-
-    return loginData;
+    return response;
   } catch (error) {
     throw new Error(error.message);
   }
 };
 
 // Log out
-export const logout = async () => {
-  const settings = {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "X-Authorization": accessToken,
-    },
-  };
+export const logout = () => {
   try {
-    const response = await fetch(`${userBaseUrl}/logout`, settings);
+    const response = request.post(`${userBaseUrl}/logout`);
 
     return response;
   } catch (error) {
