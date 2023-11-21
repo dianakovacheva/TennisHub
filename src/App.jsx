@@ -10,8 +10,8 @@ function App() {
     <>
       <Navigation />
       {/* <SideForms /> */}
-      {/* <Home /> */}
-      <Calendar />
+      <Home />
+      {/* <Calendar /> */}
       {/* <PageNotFound /> */}
       <Footer />
     </>
