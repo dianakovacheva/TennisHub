@@ -19,9 +19,9 @@ export const register = (firstName, lastName, email, password) => {
 };
 
 // Log in
-export const login = (email, password) => {
+export const login = async (email, password) => {
   try {
-    const response = request.post(`${userBaseUrl}/login`, {
+    const response = await request.post(`${userBaseUrl}/login`, {
       email,
       password,
     });
