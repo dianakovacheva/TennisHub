@@ -7,17 +7,23 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
+import { useContext } from "react";
+import useForm from "../../hooks/useForm";
+import AuthContext from "../../contexts/AuthContext";
+
 import LoginFormCSS from "./LoginForm.module.css";
 
+const LoginFormKeys = {
+  Email: "email",
+  Password: "password",
+};
+
 export default function LoginForm() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
+  const { loginSubmitHandler } = useContext(AuthContext);
+  const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+    [LoginFormKeys.Email]: "",
+    [LoginFormKeys.Password]: "",
+  });
 
   return (
     <Box
@@ -36,10 +42,9 @@ export default function LoginForm() {
         Log in
       </Typography>
       <Box
+        onSubmit={onSubmit}
         className={LoginFormCSS.loginFormContainer}
         component="form"
-        noValidate
-        onSubmit={handleSubmit}
         sx={{ mt: 1 }}
       >
         <TextField
@@ -47,8 +52,12 @@ export default function LoginForm() {
           required
           fullWidth
           id="email"
+          type="email"
           label="Email Address"
-          name="email"
+          name={LoginFormKeys.Email}
+          placeholder="john-doe@gmail.com"
+          onChange={onChange}
+          value={values[LoginFormKeys.Email]}
           autoComplete="email"
           autoFocus
         />
@@ -56,11 +65,13 @@ export default function LoginForm() {
           margin="normal"
           required
           fullWidth
-          name="password"
+          name={LoginFormKeys.Password}
           label="Password"
           type="password"
           id="password"
-          autoComplete="current-password"
+          onChange={onChange}
+          value={values[LoginFormKeys.Password]}
+          autoComplete="new-password"
         />
         <Button
           type="submit"
@@ -72,7 +83,7 @@ export default function LoginForm() {
         </Button>
         <Grid container justifyContent={"center"}>
           <Grid item>
-            <Link href="register" variant="body2">
+            <Link href="/register" variant="body2">
               {"Don't have an account? Register"}
             </Link>
           </Grid>
