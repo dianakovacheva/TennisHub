@@ -6,18 +6,31 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import { FormControl, FormLabel, Stack } from "@mui/material";
+
+import React, { useContext } from "react";
+import AuthContext from "../../contexts/AuthContext";
+import useForm from "../../hooks/useForm";
 
 import RegisterFormCSS from "./RegisterForm.module.css";
 
+const RegisterFormKeys = {
+  FirstName: "firstName",
+  LastName: "lastName",
+  Email: "email",
+  Password: "password",
+  RepeatPassword: "repeatPassword",
+};
+
 export default function RegisterForm() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
+  const { registerSubmitHandler } = useContext(AuthContext);
+  const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+    [RegisterFormKeys.FirstName]: "",
+    [RegisterFormKeys.LastName]: "",
+    [RegisterFormKeys.Email]: "",
+    [RegisterFormKeys.Password]: "",
+    [RegisterFormKeys.RepeatPassword]: "",
+  });
 
   return (
     <Box
@@ -35,17 +48,18 @@ export default function RegisterForm() {
         Register
       </Typography>
       <Box
+        onSubmit={onSubmit}
         className={RegisterFormCSS.registerFormContainer}
         component="form"
-        noValidate
-        onSubmit={handleSubmit}
         sx={{ mt: 1 }}
       >
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <TextField
               autoComplete="given-name"
-              name="firstName"
+              name={RegisterFormKeys.FirstName}
+              onChange={onChange}
+              value={values[RegisterFormKeys.FirstName]}
               required
               fullWidth
               id="firstName"
@@ -60,7 +74,9 @@ export default function RegisterForm() {
               fullWidth
               id="lastName"
               label="Last Name"
-              name="lastName"
+              name={RegisterFormKeys.LastName}
+              onChange={onChange}
+              value={values[RegisterFormKeys.LastName]}
               autoComplete="family-name"
               type="text"
             />
@@ -71,16 +87,21 @@ export default function RegisterForm() {
               fullWidth
               id="email"
               label="Email Address"
-              name="email"
+              name={RegisterFormKeys.Email}
+              onChange={onChange}
+              value={values[RegisterFormKeys.Email]}
               autoComplete="email"
               type="text"
+              placeholder="john-doe@email.com"
             />
           </Grid>
           <Grid item xs={12}>
             <TextField
               required
               fullWidth
-              name="password"
+              name={RegisterFormKeys.Password}
+              onChange={onChange}
+              value={values[RegisterFormKeys.Password]}
               label="Password"
               type="password"
               id="password"
@@ -91,7 +112,9 @@ export default function RegisterForm() {
             <TextField
               required
               fullWidth
-              name="repeatPassword"
+              name={RegisterFormKeys.RepeatPassword}
+              onChange={onChange}
+              value={values[RegisterFormKeys.RepeatPassword]}
               label="Repeat Password"
               type="password"
               id="repeatPassword"
