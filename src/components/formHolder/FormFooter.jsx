@@ -9,7 +9,7 @@ export default function FooterHomePage() {
           <a href="https://github.com/dianakovacheva/TennisHub">
             <img
               className={FormFooterCSS.footerGithubMark}
-              src="../../../public/images/github-mark.svg"
+              src="/images/github-mark.svg"
               alt="github-mark"
               width="20px"
               height="20px"
