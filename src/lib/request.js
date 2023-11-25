@@ -7,6 +7,7 @@ const buildOptions = (data) => {
       "content-type": "application/json",
     };
   }
+  options.credentials = "include";
 
   const token = localStorage.getItem("accessToken");
 
