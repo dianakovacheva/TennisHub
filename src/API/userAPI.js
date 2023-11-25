@@ -18,7 +18,7 @@ export const register = (firstName, lastName, email, password) => {
   }
 };
 
-// Log in
+// Login
 export const login = async (email, password) => {
   try {
     const response = await request.post(`${userBaseUrl}/login`, {
@@ -32,11 +32,10 @@ export const login = async (email, password) => {
   }
 };
 
-// Log out
+// Logout
 export const logout = () => {
   try {
     const response = request.post(`${userBaseUrl}/logout`);
-
     return response;
   } catch (error) {
     throw new Error(error.message);
