@@ -14,14 +14,14 @@ export default function useLocalStorage(key, defaultState) {
   const setLocalStorageState = (value) => {
     setState(value);
 
-    let serializedValue;
+    let stringifiedValue;
     if (typeof value === "function") {
-      serializedValue = JSON.stringify(value(state));
+      stringifiedValue = JSON.stringify(value(state));
     } else {
-      serializedValue = JSON.stringify(value);
+      stringifiedValue = JSON.stringify(value);
     }
 
-    localStorage.setItem(key, serializedValue);
+    localStorage.setItem(key, stringifiedValue);
   };
 
   return [state, setLocalStorageState];
