@@ -2,25 +2,24 @@ import { createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 import * as userAPI from "../API/userAPI";
-import Endpoint from "../endPoints";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
-  const [auth, setAuth] = useLocalStorage("auth", {});
+  const [auth, setAuth] = useLocalStorage("user", {});
 
+  // Login
   const loginSubmitHandler = async (values) => {
     const result = await userAPI.login(values.email, values.password);
 
     setAuth(result);
 
-    localStorage.setItem("accessToken", result.accessToken);
-
-    navigate(Endpoint.Home);
+    navigate("/");
   };
 
+  // Register
   const registerSubmitHandler = async (values) => {
     const result = await userAPI.register(
       values.firstName,
@@ -31,15 +30,16 @@ export const AuthProvider = ({ children }) => {
 
     setAuth(result);
 
-    localStorage.setItem("accessToken", result.accessToken);
-
-    navigate(Endpoint.Home);
+    navigate("/");
   };
 
+  // Logout
   const logoutHandler = () => {
     setAuth({});
 
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem("user");
+
+    navigate("/");
   };
 
   const values = {
@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
     username: (auth.firstName && auth.lastName) || auth.email,
     email: auth.email,
     userId: auth._id,
-    isAuthenticated: !!auth.token,
+    isAuthenticated: !!auth.user,
   };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
