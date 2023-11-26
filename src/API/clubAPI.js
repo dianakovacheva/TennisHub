@@ -1,4 +1,6 @@
-const clubBaseURL = "http://localhost:3000/api/club/";
+import * as request from "../lib/request";
+
+const clubBaseURL = "http://localhost:3000/api/club";
 
 export const getAllClubs = async () => {
   try {
