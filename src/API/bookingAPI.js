@@ -39,3 +39,39 @@ export const getBookingById = async (bookingId) => {
     throw new Error(error.message);
   }
 };
+
+// Edit booking //
+export const editBooking = async (
+  bookingId,
+  courtId,
+  startTime,
+  endTime,
+  players
+) => {
+  try {
+    const bookingData = await request.put(
+      `${bookingBaseUrl}/${bookingId}/edit`,
+      courtId,
+      startTime,
+      endTime,
+      players
+    );
+
+    return bookingData;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Delete booking //
+export const deleteBooking = async (bookingId) => {
+  try {
+    const booking = await request.delete(
+      `${bookingBaseUrl}/${bookingId}/delete`
+    );
+
+    return booking;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
