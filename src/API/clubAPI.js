@@ -14,3 +14,15 @@ export const getAllClubs = async () => {
     throw new Error(error.message);
   }
 };
+
+// Get club courts //
+export const getClubCourts = async () => {
+  const clubId = "65535a13a601268c7bfbef73";
+  try {
+    const allCourtsData = await request.get(`${clubBaseURL}/${clubId}/courts`);
+
+    return allCourtsData;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
