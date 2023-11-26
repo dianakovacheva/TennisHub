@@ -1,3 +1,5 @@
+import React, { useContext } from "react";
+
 import Avatar from "@mui/material/Avatar";
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
@@ -9,7 +11,6 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
-import React, { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import useForm from "../../hooks/useForm";
 
