@@ -21,7 +21,7 @@ import Tooltip from "@mui/material/Tooltip";
 import { Link } from "react-router-dom";
 
 import AuthContext from "../../../contexts/AuthContext";
-import NavigationItems from "./navigationItems";
+import NavigationItems from "./navigation/NavigationItems";
 
 import UserHeaderCSS from "../user/UserHeader.module.css";
 
