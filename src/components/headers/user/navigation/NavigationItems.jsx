@@ -44,7 +44,7 @@ export default function NavigationItems() {
           <ListItemIcon>
             <EventIcon />
           </ListItemIcon>
-          <ListItemText primary="Book Now" />
+          <ListItemText primary="Book Court" />
         </ListItemButton>
       </Link>
     </>
