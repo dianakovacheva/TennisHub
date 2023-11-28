@@ -1,0 +1,40 @@
+/* .container {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  align-items: stretch;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.87);
+} */
+
+/* Left side .container .heroImg {
+  max-width: 60%;
+  flex-basis: 60%;
+  object-fit: cover;
+  flex-grow: 0;
+} */
+
+/* @media screen and (max-width: 600px) {
+  .container .heroImg {
+    display: none;
+  }
+} */
+
+/* Right side */
+/* .container .rightSide {
+  flex-basis: 40%;
+  max-width: 40%;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+/* @media screen and (max-width: 600px) {
+  .container .rightSide {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+} */
