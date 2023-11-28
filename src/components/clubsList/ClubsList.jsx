@@ -22,6 +22,13 @@ export default function ClubsList() {
     <>
       <Container className={ClubsListCSS.clubsListContainer} maxWidth="md">
         <Grid container spacing={4}>
+          {clubs.map((club) => (
+            <Grid item key={club._id}>
+              <ClubsListItemCard key={club._id} {...club} />
+
+              {clubs.length === 0 && (
+                <h3 className={ClubsListCSS.notClubs}>No clubs yet</h3>
+              )}
             </Grid>
           ))}
         </Grid>
