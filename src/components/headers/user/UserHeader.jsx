@@ -74,14 +74,6 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-const userNav = [
-  { label: "Clubs", link: "/clubs" },
-  {
-    label: "Book Now",
-    link: "/book-court",
-  },
-];
-
 const dropdownMenu = ["Profile", "My Bookings", "Logout"];
 
 export default function UserHeader({ children }) {
@@ -149,7 +141,7 @@ export default function UserHeader({ children }) {
               {dropdownMenu.map((menuItem) => (
                 <MenuItem key={menuItem} onClick={handleCloseUserMenu}>
                   <Typography className={UserHeaderCSS.menuItem}>
-                    {menuItem}
+                    <Link to={`/${menuItem}`}>{menuItem}</Link>
                   </Typography>
                 </MenuItem>
               ))}
