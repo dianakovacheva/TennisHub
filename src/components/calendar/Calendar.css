@@ -1,7 +1,7 @@
 .calendar-container {
-  height: 85vh;
+  height: 100vh;
   max-width: 90%;
-  padding-top: 3em;
+  padding: 3em 0;
   margin: auto;
 }
 
