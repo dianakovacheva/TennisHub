@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 
-import ClubsListItemCard from "./clubsListItem/ClubListItemCard";
+import ClubsListItemCard from "./clubsListItem/ClubsListItemCard";
 import { getAllClubs } from "../../API/clubAPI";
 import ClubsListCSS from "./ClubsList.module.css";
 
