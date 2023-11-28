@@ -55,6 +55,6 @@
   flex-grow: 1;
   height: 100vh;
   overflow: auto;
-  padding-top: 3em;
+  margin-top: 64px;
   background-color: #f5f5f5;
 }
