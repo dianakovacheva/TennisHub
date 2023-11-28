@@ -77,7 +77,7 @@ export default function Login() {
               type="email"
               label="Email Address"
               name={LoginFormKeys.Email}
-              placeholder="john-doe@gmail.com"
+              placeholder="john.doe@gmail.com"
               onChange={onChange}
               value={values[LoginFormKeys.Email]}
               autoComplete="email"
