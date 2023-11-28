@@ -1,0 +1,28 @@
+/* Card Holder */
+.cardBox {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Club Image */
+.clubImage {
+  width: 40%;
+  height: auto;
+}
+
+/* Card Content */
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+/* Club Summary */
+.clubSummary {
+  padding-top: 1em;
+}
+
+/* Action Btn */
+.actionBtn {
+  padding: 0.5em 0 !important;
+}
