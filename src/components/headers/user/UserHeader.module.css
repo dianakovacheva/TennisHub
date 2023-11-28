@@ -1,0 +1,58 @@
+/* Navigation Bar */
+.navigationContainer {
+  display: flex;
+}
+.navigationBar {
+  position: absolute;
+}
+
+/* Navigation Toolbar */
+.navigationToolbar {
+  padding-right: 24px !important;
+}
+
+/* Burger Menu Icon */
+.burgerMenuIcon {
+  margin-right: 36px !important;
+  color: #ffffff !important;
+}
+
+/* Site logo */
+.logo {
+  font-size: 24px;
+  color: #ffffff !important;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+}
+
+/* Avatar */
+.avatarContainer {
+  flex-grow: 0 !important;
+}
+
+.avatarIconButton {
+  padding: 0 !important;
+}
+
+/* User Dropdown Menu */
+#menuAppbar {
+  margin-top: 45px;
+}
+
+.menuItem {
+  text-align: center;
+}
+
+/* Side Menu */
+.sideMenuToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Main */
+.mainContainer {
+  flex-grow: 1;
+  height: 100vh;
+  overflow: auto;
+}
