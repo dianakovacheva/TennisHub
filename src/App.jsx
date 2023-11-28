@@ -1,6 +1,7 @@
+import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Home from "./components/home/Home";
+import GuestHome from "./components/home/guest/GuestHome";
 import GuestHeader from "./components/headers/guest/GuestHeader";
 import UserHeader from "./components/headers/user/UserHeader";
 import Footer from "./components/footer/Footer";
@@ -9,8 +10,8 @@ import Register from "./components/register/Register";
 import Login from "./components/login/Login";
 import Logout from "./components/logout/Logout";
 import Calendar from "./components/calendar/Calendar";
+import ClubGallery from "./components/clubGallery/clubGallery";
 
-import { useContext } from "react";
 import AuthContext from "./contexts/AuthContext";
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
   const routes = (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<GuestHome />} />
+        <Route path="/clubs" element={<ClubGallery />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
