@@ -57,11 +57,56 @@ export default function GuestHeader({ children }) {
             {/* End App Logo */}
 
             {/* Start Mobile GuestHeader */}
+            <Box className={GuestHeaderCSS.mobileMenuContainer}>
+              <Link to="/" className={GuestHeaderCSS.mobileMenuLogo}>
+                <Typography variant="h5" noWrap component="a" href="/">
+                  TennisHub
+                </Typography>
+              </Link>
+              <Box className={GuestHeaderCSS.mobileMenu}>
+                <IconButton
+                  className={GuestHeaderCSS.mobileMenuIcon}
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                >
+                  {/* Navigation Items */}
+                  {pages.map((page) => (
+                    <MenuItem key={page.url}>
+                      <Link to={`${page.url}`}>{page.label}</Link>
+                    </MenuItem>
+                  ))}
+
+                  {/* Start Search */}
+                  <Search />
+                  {/* End Search */}
+                </Menu>
+              </Box>
             </Box>
             {/* End Mobile GuestHeader */}
 
             {/* Start GuestHeader Links */}
             <Box
+              className={GuestHeaderCSS.navigationLinks}
               sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             >
               {/* Navigation Items */}
@@ -78,6 +123,7 @@ export default function GuestHeader({ children }) {
             {/* End GuestHeader Links */}
 
             {/* Start Search */}
+            <Search className={GuestHeaderCSS.search} />
             {/* End Search */}
           </Toolbar>
         </Container>
