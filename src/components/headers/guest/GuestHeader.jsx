@@ -15,6 +15,27 @@ import { Link } from "react-router-dom";
 import Search from "../../search/Search";
 import GuestHeaderCSS from "./GuestHeader.module.css";
 
+const pages = [
+  {
+    label: "Home",
+    url: "/",
+  },
+  {
+    label: "Clubs",
+    url: "/clubs",
+  },
+  {
+    label: "Tennis News",
+    url: "/news",
+  },
+  {
+    label: "Login",
+    url: "/login",
+  },
+  {
+    label: "Register",
+    url: "/register",
+  },
 ];
 
 export default function GuestHeader({ children }) {
@@ -43,7 +64,15 @@ export default function GuestHeader({ children }) {
             <Box
               sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             >
+              {/* Navigation Items */}
               {pages.map((page) => (
+                <MenuItem key={page.url}>
+                  <Link to={`${page.url}`}>
+                    <Button className={GuestHeaderCSS.menuButton}>
+                      {page.label}
+                    </Button>
+                  </Link>
+                </MenuItem>
               ))}
             </Box>
             {/* End GuestHeader Links */}
