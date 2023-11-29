@@ -25,6 +25,7 @@ export default function ClubsList() {
         <Grid container spacing={4}>
           {clubs.map((club) => (
             <Grid item key={club._id}>
+              {/* Clubs List Item Card */}
               <ClubsListItemCard key={club._id} {...club} />
 
               {clubs.length === 0 && (
