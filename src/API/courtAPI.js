@@ -2,7 +2,7 @@ import * as request from "../lib/request";
 
 const courtBaseUrl = "http://localhost:3000/api/club/court";
 
-// Create court //
+// Create court
 export const createCourt = async (
   clubId,
   courtName,
@@ -25,18 +25,18 @@ export const createCourt = async (
   }
 };
 
-// Get court by id //
-export const getCourtById = async (courtId) => {
-  try {
-    const courtData = await request.get(`${courtBaseUrl}/${courtId}`);
+// Get court by id
+// export const getCourtById = async (courtId) => {
+//   try {
+//     const courtData = await request.get(`${courtBaseUrl}/${courtId}`);
 
-    return courtData;
-  } catch (error) {
-    throw new Error(error.message);
-  }
-};
+//     return courtData;
+//   } catch (error) {
+//     throw new Error(error.message);
+//   }
+// };
 
-// Edit court //
+// Edit court
 export const editCourt = async (
   clubId,
   courtName,
@@ -60,7 +60,7 @@ export const editCourt = async (
   }
 };
 
-// Delete court //
+// Delete court
 export const deleteCourt = async (courtId) => {
   try {
     const court = await request.delete(`${courtBaseUrl}/${courtId}/delete`);
