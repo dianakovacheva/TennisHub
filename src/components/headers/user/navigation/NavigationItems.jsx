@@ -1,8 +1,8 @@
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 import ListSubheader from "@mui/material/ListSubheader";
-// import DashboardIcon from "@mui/icons-material/Dashboard";
 import HomeIcon from "@mui/icons-material/Home";
 import SportsTennisIcon from "@mui/icons-material/SportsTennis";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
@@ -18,9 +18,9 @@ export default function NavigationItems() {
       <Link to={"/"}>
         <ListItemButton>
           <ListItemIcon>
-            <HomeIcon />
+            <DashboardIcon />
           </ListItemIcon>
-          <ListItemText primary="Home" />
+          <ListItemText primary="Dashboard" />
         </ListItemButton>
       </Link>
       <Link to={"/clubs"}>
