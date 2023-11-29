@@ -54,6 +54,11 @@ export default function GuestHeader({ children }) {
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             {/* Start App Logo */}
+            <Link to="/" className={GuestHeaderCSS.logo}>
+              <Typography variant="h6" component="a">
+                TennisHub
+              </Typography>
+            </Link>
             {/* End App Logo */}
 
             {/* Start Mobile GuestHeader */}
