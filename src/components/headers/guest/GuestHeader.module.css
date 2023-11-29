@@ -2,3 +2,63 @@
   justify-content: flex-end;
   margin-right: 1em;
 }
+
+.logo {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-right: 2px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #ffffff !important;
+}
+
+.mobileMenuLogo,
+.mobileMenuIcon,
+#menu-appbar {
+  display: none !important;
+}
+
+/* Mobile Menu */
+@media screen and (max-width: 600px) {
+  .mobileMenuContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    width: 100%;
+  }
+
+  .mobileMenuLogo,
+  .mobileMenuIcon,
+  #menu-appbar {
+    display: flex !important;
+  }
+
+  .logo,
+  ._searchContainer_k1bja_1 {
+    display: none !important;
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  .mobileMenuIcon {
+    color: #ffffff !important;
+  }
+
+  #menu-appbar {
+    display: block;
+  }
+
+  .mobileMenuLogo {
+    flex-wrap: nowrap;
+    margin-right: 2px;
+    display: flex;
+    flex-grow: 1;
+    font-weight: 700;
+    text-decoration: none;
+    color: #ffffff !important;
+  }
+}
