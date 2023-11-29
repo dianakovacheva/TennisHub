@@ -3,6 +3,10 @@
   margin-right: 1em;
 }
 
+.menuButton {
+  color: #ffffff !important;
+}
+
 .logo {
   display: flex;
   flex-wrap: nowrap;
