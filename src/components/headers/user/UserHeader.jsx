@@ -5,23 +5,15 @@ import Box from "@mui/material/Box";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
 
 import { Link } from "react-router-dom";
 
-import AuthContext from "../../../contexts/AuthContext";
 import NavigationItems from "./navigation/NavigationItems";
+import DropdownMenu from "./dropdownMenu/DropdownMenu";
 
 import UserHeaderCSS from "../user/UserHeader.module.css";
 
@@ -74,20 +66,8 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-const dropdownMenu = ["Profile", "My Bookings", "Logout"];
-
 export default function UserHeader({ children }) {
-  const { isAuthenticated, firstName } = useContext(AuthContext);
-  const [anchorElUser, setAnchorElUser] = useState(null);
   const [open, setOpen] = useState(true);
-
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -112,42 +92,8 @@ export default function UserHeader({ children }) {
           <h1 className={UserHeaderCSS.logo}>
             <Link to="/">TennisHub</Link>
           </h1>
-
-          {/* Start Avatar UserHeader */}
-          <Box className={UserHeaderCSS.avatarContainer}>
-            <Tooltip>
-              <IconButton
-                className={UserHeaderCSS.avatarIconButton}
-                onClick={handleOpenUserMenu}
-              >
-                <Avatar alt={firstName} src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              id={UserHeaderCSS.menuAppbar}
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {dropdownMenu.map((menuItem) => (
-                <MenuItem key={menuItem} onClick={handleCloseUserMenu}>
-                  <Typography className={UserHeaderCSS.menuItem}>
-                    <Link to={`/${menuItem}`}>{menuItem}</Link>
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          {/* End Avatar UserHeader */}
+          {/* Dropdown Menu */}
+          <DropdownMenu />
         </Toolbar>
       </AppBar>
       {/* End Navigation Bar */}
@@ -166,6 +112,7 @@ export default function UserHeader({ children }) {
         </Toolbar>
         <Divider />
         <List component="nav">
+          {/* Drawer Navigation Items */}
           <NavigationItems />
           <Divider sx={{ my: 1 }} />
           {/* {secondaryListItems} */}
