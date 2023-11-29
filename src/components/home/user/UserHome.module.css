@@ -13,6 +13,12 @@
   align-items: first baseline;
 }
 
+/* Card Content Left */
+.cardContentLeft {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Card Content Right */
 
 /* Groups Icon */
