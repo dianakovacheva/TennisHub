@@ -50,6 +50,8 @@ export const AuthProvider = ({ children }) => {
     lastName: auth.lastName,
     email: auth.email,
     userId: auth._id,
+    userJoinedClubs: auth.userJoinedClubs,
+    userCreatedClubs: auth.userCreatedClubs,
     isAuthenticated: !!auth._id,
   };
 
