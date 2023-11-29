@@ -11,6 +11,7 @@ import Login from "./components/login/Login";
 import Logout from "./components/logout/Logout";
 import Calendar from "./components/calendar/Calendar";
 import ClubGallery from "./components/clubGallery/clubGallery";
+import HomeWrapper from "./components/home/HomeWrapper";
 
 import AuthContext from "./contexts/AuthContext";
 
@@ -19,7 +20,7 @@ function App() {
   const routes = (
     <>
       <Routes>
-        <Route path="/" element={<GuestHome />} />
+        <Route path="/" element={<HomeWrapper />} />
         <Route path="/clubs" element={<ClubGallery />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
