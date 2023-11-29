@@ -25,24 +25,6 @@
   flex-grow: 1;
 }
 
-/* Avatar */
-.avatarContainer {
-  flex-grow: 0 !important;
-}
-
-.avatarIconButton {
-  padding: 0 !important;
-}
-
-/* User Dropdown Menu */
-#menuAppbar {
-  margin-top: 45px;
-}
-
-.menuItem {
-  text-align: center;
-}
-
 /* Side Menu */
 .sideMenuToolbar {
   display: flex;
