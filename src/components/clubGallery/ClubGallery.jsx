@@ -1,20 +1,18 @@
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import UserHomeCSS from "../home/user/UserHome.module.css";
 import Container from "@mui/material/Container";
 
+import ClubGalleryCSS from "./ClubGallery.module.css";
 import ClubsList from "../clubsList/ClubsList";
 
 export default function ClubGallery() {
   return (
     <>
       {/* Start Hero Section */}
-      <Box className={UserHomeCSS.heroSection}>
+      <Box className={ClubGalleryCSS.heroSection}>
         <Container maxWidth="sm">
           <Typography
-            className={UserHomeCSS.callToActionText}
+            className={ClubGalleryCSS.callToActionText}
             color="text.secondary"
             paragraph
           >
