@@ -30,6 +30,7 @@ export default function ClubGallery() {
         </Box>
       )}
       {/* End Hero Section */}
+      {/* Clubs List */}
       <ClubsList />
     </>
   );
