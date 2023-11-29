@@ -12,6 +12,7 @@ import Logout from "./components/logout/Logout";
 import Calendar from "./components/calendar/Calendar";
 import ClubGallery from "./components/clubGallery/clubGallery";
 import HomeWrapper from "./components/home/HomeWrapper";
+import AuthGuard from "./components/guards/AuthGuard";
 
 import AuthContext from "./contexts/AuthContext";
 
@@ -25,7 +26,10 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/book-court" element={<Calendar />} />
+        {/* Routes only for users */}
+        <Route element={AuthGuard}>
+          <Route path="/book-court" element={<Calendar />} />
+        </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
