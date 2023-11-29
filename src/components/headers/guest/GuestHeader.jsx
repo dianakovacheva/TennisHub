@@ -39,6 +39,7 @@ const pages = [
 ];
 
 export default function GuestHeader({ children }) {
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
