@@ -71,11 +71,13 @@ export default function DropdownMenu() {
           </Box>
           <Divider />
           {dropdownMenu.map((menuItem) => (
-            <MenuItem key={menuItem.url} onClick={handleCloseUserMenu}>
-              <Typography className={DropdownMenuCSS.menuItem}>
-                <Link to={`${menuItem.url}`}>{menuItem.label}</Link>
-              </Typography>
-            </MenuItem>
+            <Link key={menuItem.url} to={`${menuItem.url}`}>
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography className={DropdownMenuCSS.menuItem}>
+                  {menuItem.label}
+                </Typography>
+              </MenuItem>
+            </Link>
           ))}
         </Menu>
       </Box>
