@@ -4,9 +4,9 @@ import GuestHome from "./guest/GuestHome";
 import UserHome from "./user/UserHome";
 
 export default function HomeWrapper() {
-  const { isAuthenticated, joinedClubs } = useContext(AuthContext);
+  const { isAuthenticated, userJoinedClubs } = useContext(AuthContext);
 
-  const isNewUser = isAuthenticated && joinedClubs.length === 0;
+  const isNewUser = isAuthenticated && userJoinedClubs.length === 0;
 
   return (
     <>
