@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import Grid from "@mui/material/Grid";
+
 import Container from "@mui/material/Container";
 
 import { getAllClubs } from "../../API/clubAPI";
