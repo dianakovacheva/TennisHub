@@ -3,4 +3,22 @@
   flex-direction: row;
 }
 
+/* Statistic Card */
+.cardHolder {
+  max-width: 30%;
+  margin: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: first baseline;
+}
+
+/* Card Content Right */
+
+/* Groups Icon */
+.groupsIcon {
+  width: 3em !important;
+  height: 3em !important;
 }
