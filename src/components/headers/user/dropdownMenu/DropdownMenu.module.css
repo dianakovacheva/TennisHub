@@ -1,0 +1,34 @@
+/* Avatar */
+.avatarContainer {
+  flex-grow: 0 !important;
+}
+
+.avatarIconButton {
+  padding: 0 !important;
+}
+
+/* User Dropdown Menu */
+#menuAppbar {
+  margin-top: 45px;
+}
+
+/* User Data */
+.userData {
+  padding: 1em;
+}
+.userName {
+  font-size: 1em !important;
+  font-weight: 500 !important;
+}
+
+.email {
+  color: #757575;
+  font-size: 1em !important;
+}
+
+/* Menu Items */
+
+.menuItem {
+  text-align: left;
+  font-size: 1em;
+}
