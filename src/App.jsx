@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import GuestHome from "./components/home/guest/GuestHome";
 import GuestHeader from "./components/headers/guest/GuestHeader";
 import UserHeader from "./components/headers/user/UserHeader";
 import Footer from "./components/footer/Footer";
@@ -26,8 +25,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
-        {/* Routes only for users */}
-        <Route element={AuthGuard}>
+        <Route element={<AuthGuard />}>
           <Route path="/book-court" element={<Calendar />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
