@@ -114,6 +114,7 @@ export default function UserHeader({ children }) {
         <List component="nav">
           {/* Drawer Navigation Items */}
           <NavigationItems />
+
           <Divider sx={{ my: 1 }} />
           {/* {secondaryListItems} */}
         </List>
