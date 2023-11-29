@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import PropTypes from "prop-types";
 
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
