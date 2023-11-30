@@ -1,0 +1,14 @@
+.cardContainer {
+  max-width: 90%;
+  margin: auto;
+}
+
+.clubImage {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Action Btn */
+.actionBtn {
+  padding: 0 0 0.5em 0.8em !important;
+}
