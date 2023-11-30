@@ -13,12 +13,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3.5em;
 }
 
 .loginFormContainer {
   max-width: 90%;
+  margin-top: 0.5em;
 }
 
 .submitBtn {
   margin: 1.5em 0 !important;
+}
+
+.link {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  color: #1976d2;
+  text-decoration: underline;
+  text-decoration-color: rgba(25, 118, 210, 0.4);
 }

@@ -4,7 +4,6 @@ import Avatar from "@mui/material/Avatar";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
@@ -14,6 +13,8 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import FormControl from "@mui/material/FormControl";
+
+import { Link } from "react-router-dom";
 
 import useForm from "../../hooks/useForm";
 import AuthContext from "../../contexts/AuthContext";
@@ -60,7 +61,6 @@ export default function Login() {
         <Box
           className={LoginCSS.loginFormBox}
           sx={{
-            my: 8,
             mx: 4,
           }}
         >
@@ -76,7 +76,6 @@ export default function Login() {
             onSubmit={onSubmit}
             className={LoginCSS.loginFormContainer}
             component="form"
-            sx={{ mt: 1 }}
           >
             {/* Email Input Field */}
             <TextField
@@ -153,7 +152,7 @@ export default function Login() {
             </Button>
             <Grid container justifyContent={"center"}>
               <Grid item>
-                <Link href="/register" variant="body2">
+                <Link to="/register" className={LoginCSS.link} variant="body2">
                   {"Don't have an account? Register"}
                 </Link>
               </Grid>
