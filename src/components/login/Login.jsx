@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 
 import Avatar from "@mui/material/Avatar";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -10,10 +10,14 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import FormControl from "@mui/material/FormControl";
 
 import useForm from "../../hooks/useForm";
 import AuthContext from "../../contexts/AuthContext";
-
 import LoginCSS from "../login/Login.module.css";
 
 const LoginFormKeys = {
@@ -21,12 +25,19 @@ const LoginFormKeys = {
   Password: "password",
 };
 
+const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]+$/i;
+
 export default function Login() {
+  const [showPassword, setShowPassword] = useState(false);
   const { loginSubmitHandler } = useContext(AuthContext);
+
   const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
     [LoginFormKeys.Email]: "",
     [LoginFormKeys.Password]: "",
   });
+
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
@@ -63,12 +74,15 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Log in
           </Typography>
-          <Box
+
+          {/* Start Login Form */}
+          <FormControl
             onSubmit={onSubmit}
             className={LoginCSS.loginFormContainer}
             component="form"
             sx={{ mt: 1 }}
           >
+            {/* Email Input Field */}
             <TextField
               margin="normal"
               required
@@ -76,25 +90,62 @@ export default function Login() {
               id="email"
               type="email"
               label="Email Address"
-              name={LoginFormKeys.Email}
+              aria-label="Email field"
               placeholder="john.doe@gmail.com"
               onChange={onChange}
+              name={LoginFormKeys.Email}
               value={values[LoginFormKeys.Email]}
+              helperText={
+                (values[LoginFormKeys.Email].length === 0
+                  ? "You must enter a value."
+                  : "") ||
+                (!values[LoginFormKeys.Email].match(emailRegExp)
+                  ? "Not a valid email."
+                  : "")
+              }
               autoComplete="email"
               autoFocus
             />
+
+            {/* Password Input Field */}
             <TextField
+              label="Password"
+              aria-label="Password field"
+              variant="outlined"
               margin="normal"
+              id="password"
               required
               fullWidth
-              name={LoginFormKeys.Password}
-              label="Password"
-              type="password"
-              id="password"
-              onChange={onChange}
-              value={values[LoginFormKeys.Password]}
+              autoFocus
               autoComplete="new-password"
+              name={LoginFormKeys.Password}
+              value={values[LoginFormKeys.Password]}
+              helperText={
+                (values[LoginFormKeys.Password].length === 0
+                  ? "You must enter a value."
+                  : "") ||
+                (values[LoginFormKeys.Password].length < 8
+                  ? "Password must be at least 8 characters."
+                  : "")
+              }
+              type={showPassword ? "text" : "password"}
+              onChange={onChange}
+              InputProps={{
+                // This is where the toggle button is added
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
+
             <Button
               type="submit"
               fullWidth
@@ -110,7 +161,8 @@ export default function Login() {
                 </Link>
               </Grid>
             </Grid>
-          </Box>
+          </FormControl>
+          {/* End Login Form */}
         </Box>
       </Grid>
     </Grid>
