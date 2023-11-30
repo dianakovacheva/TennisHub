@@ -28,8 +28,8 @@ const LoginFormKeys = {
 const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]+$/i;
 
 export default function Login() {
-  const [showPassword, setShowPassword] = useState(false);
   const { loginSubmitHandler } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
     [LoginFormKeys.Email]: "",
@@ -40,32 +40,29 @@ export default function Login() {
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
   return (
-    <Grid container component="main" sx={{ height: "100vh" }}>
-      <CssBaseline />
+    <Grid className={LoginCSS.loginFormGrid} container component="main">
       <Grid
+        className={LoginCSS.loginPageLeftSide}
         item
         xs={false}
         sm={4}
         md={7}
-        sx={{
-          backgroundImage: "url(/images/tennis-sign-in-page.jpg)",
-          backgroundRepeat: "no-repeat",
-          backgroundColor: (t) =>
-            t.palette.mode === "light"
-              ? t.palette.grey[50]
-              : t.palette.grey[900],
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
       />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid
+        className={LoginCSS.loginPageRightSide}
+        item
+        xs={12}
+        sm={8}
+        md={5}
+        component={Paper}
+        elevation={6}
+        square
+      >
         <Box
+          className={LoginCSS.loginFormBox}
           sx={{
             my: 8,
             mx: 4,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
@@ -147,10 +144,11 @@ export default function Login() {
             />
 
             <Button
+              className={LoginCSS.submitBtn}
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              // sx={{ mt: 3, mb: 2 }}
             >
               Log in
             </Button>
