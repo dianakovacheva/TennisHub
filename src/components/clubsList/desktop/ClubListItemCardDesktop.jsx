@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 
 import { Link } from "react-router-dom";
 
-import ClubsListItemCardCSS from "./ClubsListItemCard.module.css";
+import ClubListItemCardDesktopCSS from "./ClubListItemCardDesktop.module.css";
 
 export default function ClubsListItemCard({
   _id,
@@ -17,15 +17,15 @@ export default function ClubsListItemCard({
   address,
 }) {
   return (
-    <Card className={ClubsListItemCardCSS.cardContainer}>
-      <Box className={ClubsListItemCardCSS.cardBox}>
+    <Card className={ClubListItemCardDesktopCSS.cardContainer}>
+      <Box className={ClubListItemCardDesktopCSS.cardBox}>
         <img
-          className={ClubsListItemCardCSS.clubImage}
+          className={ClubListItemCardDesktopCSS.clubImage}
           src={`${imageURL}?w=164&h=164&fit=crop&auto=format`}
           alt={name}
           loading="lazy"
         />
-        <CardContent className={ClubsListItemCardCSS.cardContent}>
+        <CardContent className={ClubListItemCardDesktopCSS.cardContent}>
           <Typography component="div" variant="h5">
             {name}
           </Typography>
@@ -37,14 +37,14 @@ export default function ClubsListItemCard({
             {address}
           </Typography>
           <Typography
-            className={ClubsListItemCardCSS.clubSummary}
+            className={ClubListItemCardDesktopCSS.clubSummary}
             variant="body2"
             color="text.secondary"
             component="div"
           >
             {summary}
           </Typography>
-          <CardActions className={ClubsListItemCardCSS.actionBtn}>
+          <CardActions className={ClubListItemCardDesktopCSS.actionBtn}>
             <Link to={`/club/${_id}`}>
               <Button size="small">Learn More</Button>
             </Link>
