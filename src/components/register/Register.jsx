@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 
 import Avatar from "@mui/material/Avatar";
-import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
@@ -13,6 +12,8 @@ import Grid from "@mui/material/Grid";
 
 import AuthContext from "../../contexts/AuthContext";
 import useForm from "../../hooks/useForm";
+
+import { Link } from "react-router-dom";
 
 import RegisterFormCSS from "./Register.module.css";
 
@@ -35,33 +36,20 @@ export default function Register() {
   });
 
   return (
-    <Grid container component="main" sx={{ height: "100vh" }}>
-      <CssBaseline />
+    <Grid
+      className={RegisterFormCSS.registerFormGrid}
+      container
+      component="main"
+    >
       <Grid
+        className={RegisterFormCSS.registerPageLeftSide}
         item
         xs={false}
         sm={4}
         md={7}
-        sx={{
-          backgroundImage: "url(/images/tennis-sign-in-page.jpg)",
-          backgroundRepeat: "no-repeat",
-          backgroundColor: (t) =>
-            t.palette.mode === "light"
-              ? t.palette.grey[50]
-              : t.palette.grey[900],
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
       />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <Box className={RegisterFormCSS.registerFormBox}>
           <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
@@ -72,7 +60,6 @@ export default function Register() {
             onSubmit={onSubmit}
             className={RegisterFormCSS.registerFormContainer}
             component="form"
-            sx={{ mt: 1 }}
           >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -144,16 +131,20 @@ export default function Register() {
               </Grid>
             </Grid>
             <Button
+              className={RegisterFormCSS.submitBtn}
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
             >
               Register
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/login" variant="body2">
+                <Link
+                  to="/login"
+                  className={RegisterFormCSS.link}
+                  variant="body2"
+                >
                   Already have an account? Log in
                 </Link>
               </Grid>
