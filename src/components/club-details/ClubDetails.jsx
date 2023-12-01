@@ -9,12 +9,12 @@ import {
   CardActions,
   Button,
   Divider,
+  Stack,
 } from "@mui/material";
 
 import { Edit, Delete, Comment } from "@mui/icons-material";
 
 import * as ClubAPI from "../../API/clubAPI";
-import * as CommentAPI from "../../API/commentAPI";
 import AddComment from "../add-comment/AddComment";
 
 import ClubDetailsCSS from "./ClubDetails.module.css";
@@ -46,6 +46,29 @@ export default function ClubDetails() {
             {club.name}
           </Typography>
           <Typography color="text.secondary">{club.address}</Typography>
+          <Typography color="text.secondary">
+            Phone: {club.phoneNumber}
+          </Typography>
+
+          {Object.keys(club).length && (
+            <Stack
+              direction="row"
+              divider={<Divider orientation="vertical" flexItem />}
+              spacing={2}
+            >
+              <Typography color="text.secondary">
+                Club Manager:{" "}
+                {`${club.manager[0].firstName} ${club.manager[0].lastName}`}
+              </Typography>
+
+              <Typography color="text.secondary">
+                Members: {club.members.length}
+              </Typography>
+              <Typography color="text.secondary">
+                Courts: {club.courts.length}
+              </Typography>
+            </Stack>
+          )}
           <Typography
             className={ClubDetailsCSS.clubSummary}
             variant="body2"
@@ -69,6 +92,7 @@ export default function ClubDetails() {
       <Divider className={ClubDetailsCSS.divider} variant="middle" />
 
       <AddComment />
+      <CommentsList />
     </>
   );
 }
