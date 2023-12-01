@@ -1,42 +1,13 @@
 import * as request from "../lib/request";
 
-const userBaseUrl = "http://localhost:3000/api/auth";
+const userBaseUrl = "http://localhost:3000/api/user";
 
-// Register
-export const register = (firstName, lastName, email, password) => {
+// Get User by Id
+export const getUserById = async (userId) => {
   try {
-    const response = request.post(`${userBaseUrl}/register`, {
-      firstName,
-      lastName,
-      email,
-      password,
-    });
+    const userData = await request.get(`${userBaseUrl}/${userId}`);
 
-    return response;
-  } catch (error) {
-    throw new Error(error.message);
-  }
-};
-
-// Login
-export const login = async (email, password) => {
-  try {
-    const response = await request.post(`${userBaseUrl}/login`, {
-      email,
-      password,
-    });
-
-    return response;
-  } catch (error) {
-    throw new Error(error.message);
-  }
-};
-
-// Logout
-export const logout = () => {
-  try {
-    const response = request.post(`${userBaseUrl}/logout`);
-    return response;
+    return userData;
   } catch (error) {
     throw new Error(error.message);
   }
