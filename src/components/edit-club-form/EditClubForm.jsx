@@ -67,9 +67,10 @@ export default function EditClubForm() {
           <TextField
             required
             id="name"
-            name="name"
+            name={club.name}
             label="Club Name"
             fullWidth
+            value={club.name}
             autoComplete="name"
             variant="outlined"
             onChange={onChange}
@@ -79,9 +80,10 @@ export default function EditClubForm() {
           <TextField
             required
             id="address"
-            name="address"
+            name={club.address}
             label="Address"
             fullWidth
+            value={club.address}
             autoComplete="address"
             variant="outlined"
             onChange={onChange}
@@ -91,9 +93,10 @@ export default function EditClubForm() {
           <TextField
             required
             id="phoneNumber"
-            name="phoneNumber"
+            name={club.phoneNumber}
             label="Phone Number"
             fullWidth
+            value={club.phoneNumber}
             autoComplete="phoneNumber"
             variant="outlined"
             onChange={onChange}
@@ -103,9 +106,10 @@ export default function EditClubForm() {
           <TextField
             required
             id="summary"
-            name="summary"
+            name={club.summary}
             label="Summary"
             fullWidth
+            value={club.summary}
             autoComplete="summary"
             variant="outlined"
             onChange={onChange}
@@ -114,9 +118,10 @@ export default function EditClubForm() {
         <Grid item xs={12}>
           <TextField
             id="imageURL"
-            name="imageURL"
+            name={club.imageURL}
             label="Image URL"
             fullWidth
+            value={club.imageURL}
             autoComplete="imageURL"
             variant="outlined"
             onChange={onChange}

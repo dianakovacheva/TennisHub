@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 import AuthContext from "../../contexts/AuthContext";
-import ClubsList from "../clubsList/ClubsList";
+import ClubsList from "../clubs-list/ClubsList";
 
 import ClubGalleryCSS from "./ClubGallery.module.css";
 

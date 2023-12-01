@@ -6,7 +6,6 @@ import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import ClubListItemCardMobileCSS from "./ClubListItemCardMobile.module.css";

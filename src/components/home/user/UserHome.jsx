@@ -9,7 +9,7 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import UserHomeCSS from "../user/UserHome.module.css";
 
 import AuthContext from "../../../contexts/AuthContext";
-import StatisticCard from "./statisticCard/StatisticCard";
+import StatisticCard from "./statistic-card/StatisticCard";
 import { getUserById } from "../../../API/userAPI";
 
 export default function UserHome() {

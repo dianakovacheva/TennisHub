@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 import GuestHomeCSS from "./GuestHome.module.css";
-import ClubsList from "../../clubsList/ClubsList";
+import ClubsList from "../../clubs-list/ClubsList";
 
 export default function GuestHome() {
   return (
