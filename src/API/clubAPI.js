@@ -3,13 +3,13 @@ import * as request from "../lib/request";
 const clubBaseURL = "http://localhost:3000/api/club";
 
 // Create club
-export const createClub = async (
+export const createClub = async ({
   name,
   imageURL,
   summary,
   address,
-  phoneNumber
-) => {
+  phoneNumber,
+}) => {
   try {
     const clubData = await request.post(`${clubBaseURL}/create`, {
       name,
@@ -48,13 +48,13 @@ export const getClubById = async (clubId) => {
 };
 
 // Edit club
-export const editClub = async (
+export const editClub = async ({
   name,
   imageURL,
   summary,
   address,
-  phoneNumber
-) => {
+  phoneNumber,
+}) => {
   try {
     const clubData = await request.put(`${clubBaseURL}/${clubId}/edit`, {
       name,
