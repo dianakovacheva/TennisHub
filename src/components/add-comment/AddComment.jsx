@@ -12,7 +12,7 @@ import AddCommentCSS from "./AddComment.module.css";
 export default function AddComment() {
   return (
     <Card className={AddCommentCSS.commentContainer}>
-      <CardContent>
+      <CardContent className={AddCommentCSS.cardContent}>
         <Typography className={AddCommentCSS.commentHeader}>
           Leave a comment
         </Typography>
