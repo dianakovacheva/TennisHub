@@ -18,6 +18,7 @@ import * as ClubAPI from "../../API/clubAPI";
 import AddComment from "../add-comment/AddComment";
 
 import ClubDetailsCSS from "./ClubDetails.module.css";
+import CommentsList from "../comments-list/CommentsList";
 
 export default function ClubDetails() {
   const navigate = useNavigate();
