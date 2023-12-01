@@ -17,3 +17,13 @@
 #filled-textarea {
   width: 45vw;
 }
+
+@media screen and (max-width: 600px) {
+  .commentContainer {
+    max-width: 90%;
+  }
+
+  #filled-textarea {
+    width: 60vw;
+  }
+}
