@@ -4,16 +4,19 @@ import { Route, Routes } from "react-router-dom";
 import GuestHeader from "./components/headers/guest/GuestHeader";
 import UserHeader from "./components/headers/user/UserHeader";
 import Footer from "./components/footer/Footer";
-import PageNotFound from "./components/pageNotFound/PageNotFound";
+import PageNotFound from "./components/page-not-found/PageNotFound";
 import Register from "./components/register/Register";
 import Login from "./components/login/Login";
 import Logout from "./components/logout/Logout";
 import Calendar from "./components/calendar/Calendar";
-import ClubGallery from "./components/clubGallery/clubGallery";
+import ClubGallery from "./components/club-gallery/clubGallery";
 import HomeWrapper from "./components/home/HomeWrapper";
 import AuthGuard from "./components/guards/AuthGuard";
 
 import AuthContext from "./contexts/AuthContext";
+import CreateClubForm from "./components/create-club-form/CreateClubForm";
+import EditClubForm from "./components/edit-club-form/EditClubForm";
+import ClubDetails from "./components/club-details/ClubDetails";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -22,10 +25,13 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeWrapper />} />
         <Route path="/clubs" element={<ClubGallery />} />
+        <Route path="/club/:clubId" element={<ClubDetails />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route element={<AuthGuard />}>
+          <Route path="/create-club" element={<CreateClubForm />} />
+          <Route path="/club/:clubId/edit" element={<EditClubForm />} />
           <Route path="/book-court" element={<Calendar />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
