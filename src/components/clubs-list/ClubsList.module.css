@@ -1,12 +1,14 @@
-.desktopClubsListContainer {
-  padding: 4em 0;
+@media screen and (min-width: 849px) {
+  .desktopClubsListContainer {
+    padding: 4em 0;
+  }
+
+  .mobileClubsListContainer {
+    display: none !important;
+  }
 }
 
-.mobileClubsListContainer {
-  display: none !important;
-}
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 850px) {
   .desktopClubsListContainer {
     display: none !important;
   }
