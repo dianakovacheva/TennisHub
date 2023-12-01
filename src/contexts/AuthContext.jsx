@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
-import * as userAPI from "../API/userAPI";
+import * as authAPI from "../API/authAPI";
 
 const AuthContext = createContext();
 
@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
   // Login
   const loginSubmitHandler = async (values) => {
-    const result = await userAPI.login(values.email, values.password);
+    const result = await authAPI.login(values.email, values.password);
 
     setAuth(result);
 
@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
 
   // Register
   const registerSubmitHandler = async (values) => {
-    const result = await userAPI.register(
+    const result = await authAPI.register(
       values.firstName,
       values.lastName,
       values.email,
