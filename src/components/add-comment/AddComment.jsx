@@ -19,7 +19,7 @@ export default function AddComment() {
         <TextField
           id={AddCommentCSS["filled-textarea"]}
           label="Write your comment here..."
-          placeholder="Placeholder"
+          //   placeholder="Placeholder"
           required
           multiline
           rows={4}
