@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -10,9 +10,20 @@ import UserHomeCSS from "../user/UserHome.module.css";
 
 import AuthContext from "../../../contexts/AuthContext";
 import StatisticCard from "./statisticCard/StatisticCard";
+import { getUserById } from "../../../API/userAPI";
 
 export default function UserHome() {
-  const { userCreatedClubs } = useContext(AuthContext);
+  const { userId } = useContext(AuthContext);
+
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    getUserById(userId)
+      .then((result) => setUserData(result))
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [userId]);
 
   return (
     <Box className={UserHomeCSS.statisticCardsSection}>
@@ -21,7 +32,11 @@ export default function UserHome() {
         <Box>
           <CardContent className={UserHomeCSS.cardContentLeft}>
             <Typography component="div" variant="h3">
-              {userCreatedClubs.length}
+              {userData.userCreatedClubs ? (
+                <>{userData.userCreatedClubs.length}</>
+              ) : (
+                0
+              )}
             </Typography>
             <Typography color="text.secondary" component="p" variant="h6">
               Created Clubs
