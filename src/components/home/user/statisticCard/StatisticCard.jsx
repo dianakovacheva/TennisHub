@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import GroupsIcon from "@mui/icons-material/Groups";
 
 import AuthContext from "../../../../contexts/AuthContext";
+
 import StatisticCardCSS from "./StatisticCard.module.css";
 
 export default function StatisticCard() {
