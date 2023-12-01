@@ -1,0 +1,13 @@
+.editClubFormContainer {
+  max-width: 70%;
+  margin: 3em auto 0 auto;
+  padding: 3em;
+}
+
+.formTitle {
+  text-align: center;
+}
+
+.submitBtn {
+  margin: 1.5em 0 !important;
+}
