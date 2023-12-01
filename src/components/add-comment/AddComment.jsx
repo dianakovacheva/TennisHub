@@ -1,11 +1,9 @@
 import {
   Card,
   CardContent,
-  CardMedia,
   Typography,
   CardActions,
   Button,
-  Divider,
   TextField,
 } from "@mui/material";
 
