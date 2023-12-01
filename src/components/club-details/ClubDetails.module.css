@@ -1,16 +1,7 @@
-/* .pageContainer {
-  display: flex;
-  flex-direction: row;
-} */
-
-/* Page Left Side*/
-/* .imageSection {
-} */
-
 .detailsCardContainer {
   max-width: 70%;
   margin: 64px auto;
-  height: 80vh;
+  height: auto;
 }
 
 /* Image */
@@ -28,9 +19,16 @@
   margin-right: 3em;
   gap: 0.5em;
   justify-content: flex-end;
+  margin-bottom: 1em;
 }
 
 .divider {
   max-width: 90%;
   margin: auto !important;
+}
+
+@media screen and (max-width: 600px) {
+  .detailsCardContainer {
+    max-width: 90%;
+  }
 }
