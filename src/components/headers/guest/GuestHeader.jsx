@@ -134,7 +134,12 @@ export default function GuestHeader({ children }) {
           </Toolbar>
         </Container>
       </AppBar>
-      {children}
+
+      {/* Start Main */}
+      <Box className={GuestHeaderCSS.mainContainer} component="main">
+        {children} {/* Routes */}
+      </Box>
+      {/* End Main */}
     </>
   );
 }
