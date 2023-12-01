@@ -1,0 +1,20 @@
+.commentContainer {
+  max-width: 70%;
+  margin: 64px auto;
+  height: 45vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.commentHeader {
+  font-size: 1.5em;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+#filled-textarea {
+  width: 700px;
+  align-self: center !important;
+}
