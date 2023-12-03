@@ -12,7 +12,13 @@ import {
   Stack,
 } from "@mui/material";
 
-import { Edit, Delete, Comment } from "@mui/icons-material";
+import {
+  Edit,
+  Delete,
+  Comment,
+  PersonAdd,
+  MeetingRoom,
+} from "@mui/icons-material";
 
 import * as ClubAPI from "../../API/clubAPI";
 
@@ -85,6 +91,12 @@ export default function ClubDetailsCard() {
           </Button>
           <Button size="small" variant="outlined" startIcon={<Comment />}>
             Comment
+          </Button>
+          <Button size="small" variant="outlined" startIcon={<PersonAdd />}>
+            Join Club
+          </Button>
+          <Button size="small" variant="outlined" startIcon={<MeetingRoom />}>
+            Leave Club
           </Button>
         </CardActions>
       </Card>
