@@ -1,13 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
-import Avatar from "@mui/material/Avatar";
-import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
+import {
+  InputAdornment,
+  Avatar,
+  Paper,
+  Button,
+  TextField,
+  Box,
+  IconButton,
+  Typography,
+  Grid,
+} from "@mui/material";
+
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
+
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import AuthContext from "../../contexts/AuthContext";
 import useForm from "../../hooks/useForm";
@@ -33,6 +40,14 @@ export default function Register() {
     [RegisterFormKeys.Password]: "",
     [RegisterFormKeys.RepeatPassword]: "",
   });
+  const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
+
+  const handleClickShowPassword1 = () => setShowPassword1(!showPassword1);
+  const handleMouseDownPassword1 = () => setShowPassword1(!showPassword1);
+
+  const handleClickShowPassword2 = () => setShowPassword2(!showPassword2);
+  const handleMouseDownPassword2 = () => setShowPassword2(!showPassword2);
 
   return (
     <Grid
@@ -110,9 +125,22 @@ export default function Register() {
                   onChange={onChange}
                   value={values[RegisterFormKeys.Password]}
                   label="Password"
-                  type="password"
                   id="password"
                   autoComplete="new-password"
+                  type={showPassword1 ? "text" : "password"}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword1}
+                          onMouseDown={handleMouseDownPassword1}
+                        >
+                          {showPassword1 ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -123,9 +151,22 @@ export default function Register() {
                   onChange={onChange}
                   value={values[RegisterFormKeys.RepeatPassword]}
                   label="Repeat Password"
-                  type="password"
                   id="repeatPassword"
                   autoComplete="new-password"
+                  type={showPassword2 ? "text" : "password"}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword2}
+                          onMouseDown={handleMouseDownPassword2}
+                        >
+                          {showPassword2 ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
               </Grid>
             </Grid>
