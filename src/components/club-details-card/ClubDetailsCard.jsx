@@ -45,7 +45,7 @@ export default function ClubDetailsCard() {
 
   const deleteClubHandler = async () => {
     await ClubAPI.deleteClub(clubId);
-
+    console.log("Club deleted successfully!");
     navigate("/clubs");
   };
 
