@@ -8,6 +8,7 @@ import { getAllClubs } from "../../API/clubAPI";
 import ClubsListItemCard from "./desktop/ClubListItemCardDesktop";
 import ClubsListCSS from "./ClubsList.module.css";
 import ClubListItemCardMobile from "./mobile/ClubListItemCardMobile";
+import NoClubs from "../no-clubs/NoClubs";
 
 export default function ClubsList() {
   const [clubs, setClubs] = useState([]);
@@ -53,9 +54,7 @@ export default function ClubsList() {
               {/* Clubs List Item Card */}
               <ClubListItemCardMobile key={club._id} {...club} />
 
-              {clubs.length === 0 && (
-                <h3 className={ClubsListCSS.notClubs}>No clubs yet</h3>
-              )}
+              {clubs.length === 0 && <NoClubs />}
             </Grid>
           ))}
         </Grid>
