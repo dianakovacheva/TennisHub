@@ -37,14 +37,6 @@ export default function ClubsListItemCard({
           >
             {address}
           </Typography>
-          <Typography
-            className={ClubListItemCardDesktopCSS.clubSummary}
-            variant="body2"
-            color="text.secondary"
-            component="div"
-          >
-            {summary}
-          </Typography>
           <CardActions className={ClubListItemCardDesktopCSS.actionBtn}>
             <Link to={`/club/${_id}`}>
               <Button size="small">Learn More</Button>

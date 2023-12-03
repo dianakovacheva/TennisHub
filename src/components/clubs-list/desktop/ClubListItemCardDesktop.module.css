@@ -2,12 +2,14 @@
 .cardBox {
   display: flex;
   flex-direction: row;
+  height: 25vh;
 }
 
 /* Club Image */
 .clubImage {
   width: 40%;
   height: auto;
+  object-fit: cover;
 }
 
 /* Card Content */
@@ -17,12 +19,8 @@
   width: 70%;
 }
 
-/* Club Summary */
-.clubSummary {
-  padding-top: 1em;
-}
-
 /* Action Btn */
 .actionBtn {
-  padding: 0.5em 0 !important;
+  margin-top: auto;
+  padding: 0 !important;
 }
