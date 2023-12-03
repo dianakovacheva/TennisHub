@@ -1,6 +1,6 @@
 /* Background image */
 .section-container {
-  background-image: url("../../../public/images/pageNotFound-BG.jpg");
+  background-image: url("/images/pageNotFound-BG.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
