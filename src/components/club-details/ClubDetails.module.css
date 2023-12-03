@@ -1,34 +1,13 @@
-.detailsCardContainer {
-  max-width: 70%;
+.detailsPageContainer {
+  max-width: 70% !important;
   margin: 64px auto;
-  height: auto;
-}
-
-/* Image */
-.cardMedia {
-  height: 350px;
-}
-
-/* Summary */
-.clubSummary {
-  padding: 1em 0;
-}
-
-/* Action Btns */
-.cardActions {
-  margin-right: 3em;
-  gap: 0.5em;
-  justify-content: flex-end;
-  margin-bottom: 1em;
-}
-
-.divider {
-  max-width: 90%;
-  margin: auto !important;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
 }
 
 @media screen and (max-width: 600px) {
-  .detailsCardContainer {
-    max-width: 90%;
+  .detailsPageContainer {
+    max-width: 90% !important;
   }
 }
