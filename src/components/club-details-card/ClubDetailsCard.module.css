@@ -20,11 +20,6 @@
   margin-bottom: 1em;
 }
 
-.divider {
-  max-width: 90%;
-  margin: auto !important;
-}
-
 @media screen and (max-width: 600px) {
   .cardActions {
     justify-content: flex-start;

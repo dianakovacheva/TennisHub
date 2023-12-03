@@ -88,7 +88,6 @@ export default function ClubDetailsCard() {
           </Button>
         </CardActions>
       </Card>
-      <Divider className={ClubDetailsCardCSS.divider} variant="middle" />
     </>
   );
 }

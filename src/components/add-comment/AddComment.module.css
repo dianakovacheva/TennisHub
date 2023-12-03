@@ -1,6 +1,4 @@
 .commentContainer {
-  max-width: 70%;
-  margin: 64px auto;
   height: 45vh;
   display: flex;
   flex-direction: column;
@@ -19,10 +17,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .commentContainer {
-    max-width: 90%;
-  }
-
   #filled-textarea {
     width: 60vw;
   }

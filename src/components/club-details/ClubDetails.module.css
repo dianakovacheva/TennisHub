@@ -3,11 +3,16 @@
   margin: 64px auto;
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: 3em;
 }
 
 @media screen and (max-width: 600px) {
   .detailsPageContainer {
     max-width: 90% !important;
   }
+}
+
+.divider {
+  width: 100%;
+  margin: auto !important;
 }
