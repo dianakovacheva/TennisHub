@@ -1,0 +1,12 @@
+.commentsContainer {
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column;
+  gap: 2em !important;
+}
+
+.commentHeader {
+  font-size: 1.3em !important;
+  text-align: center;
+  padding-bottom: 1em;
+}
