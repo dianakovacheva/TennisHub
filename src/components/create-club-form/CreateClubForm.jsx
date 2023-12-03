@@ -20,9 +20,12 @@ export default function CreateClubForm() {
     const clubData = Object.fromEntries(new FormData(e.currentTarget));
 
     try {
-      await clubAPI.createClub(clubData);
+      const response = await clubAPI.createClub(clubData);
+      const createdClubId = response._id;
 
-      navigate("/clubs");
+      if (createdClubId) {
+        navigate(`/club/${createdClubId}`);
+      }
     } catch (err) {
       console.log(err);
     }
