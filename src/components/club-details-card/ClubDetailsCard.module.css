@@ -1,0 +1,33 @@
+.detailsCardContainer {
+  height: auto;
+}
+
+/* Image */
+.cardMedia {
+  height: 350px;
+}
+
+/* Summary */
+.clubSummary {
+  padding: 1em 0;
+}
+
+/* Action Btns */
+.cardActions {
+  margin-right: 3em !important;
+  gap: 0.5em;
+  justify-content: flex-end;
+  margin-bottom: 1em;
+}
+
+.divider {
+  max-width: 90%;
+  margin: auto !important;
+}
+
+@media screen and (max-width: 600px) {
+  .cardActions {
+    justify-content: flex-start;
+    margin-left: 0.5em;
+  }
+}
