@@ -1,11 +1,10 @@
 .cardContainer {
-  max-width: 90%;
   margin: auto;
 }
 
 .clubImage {
-  max-width: 100%;
-  height: auto;
+  max-width: 100% !important;
+  object-fit: cover;
 }
 
 /* Action Btn */

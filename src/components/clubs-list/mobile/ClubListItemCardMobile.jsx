@@ -19,26 +19,18 @@ export default function ClubListItemCardMobile({
 }) {
   return (
     <Card className={ClubListItemCardMobileCSS.cardContainer}>
-      <CardHeader
-        className={ClubListItemCardMobileCSS.cardHeader}
-        title={name}
-        subheader={address}
-      />
       <img
         className={ClubListItemCardMobileCSS.clubImage}
         src={imageURL || "/images/placeholder-image.png"}
         alt={name}
         loading="lazy"
       />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {summary}
-        </Typography>
-      </CardContent>
-      <CardActions
-        disableSpacing
-        className={ClubListItemCardMobileCSS.actionBtn}
-      >
+      <CardHeader
+        className={ClubListItemCardMobileCSS.cardHeader}
+        title={name}
+        subheader={address}
+      />
+      <CardActions className={ClubListItemCardMobileCSS.actionBtn}>
         <Link to={`/club/${_id}`}>
           <Button size="small">Learn More</Button>
         </Link>
