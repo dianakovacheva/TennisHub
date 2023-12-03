@@ -43,6 +43,10 @@ export default function ClubDetailsCard() {
   const isClubOwner = userId === club.manager?.find(() => true)._id;
   const hasJoinedClub = club.members?.includes(userId);
 
+  const editClubHandler = () => {
+    navigate(`/club/${clubId}/edit`);
+  };
+
   const deleteClubHandler = async () => {
     await ClubAPI.deleteClub(clubId);
     console.log("Club deleted successfully!");
@@ -124,7 +128,12 @@ export default function ClubDetailsCard() {
               >
                 Delete
               </Button>
-              <Button size="small" variant="outlined" startIcon={<Edit />}>
+              <Button
+                size="small"
+                variant="outlined"
+                startIcon={<Edit />}
+                onClick={editClubHandler}
+              >
                 Edit
               </Button>
             </>
