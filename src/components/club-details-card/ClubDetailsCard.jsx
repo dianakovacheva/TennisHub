@@ -51,7 +51,14 @@ export default function ClubDetailsCard() {
 
   const joinClubHandler = async () => {
     await ClubAPI.joinClub(clubId);
+    console.log("Club joined!");
+    navigate(`/club/${clubId}`);
+  };
 
+  const leaveClub = async () => {
+    await ClubAPI.leaveClub(clubId);
+
+    console.log("Club left successfully!");
     navigate(`/club/${clubId}`);
   };
 
@@ -132,6 +139,7 @@ export default function ClubDetailsCard() {
                 variant="outlined"
                 color="error"
                 startIcon={<MeetingRoom />}
+                onClick={leaveClub}
               >
                 Leave Club
               </Button>
