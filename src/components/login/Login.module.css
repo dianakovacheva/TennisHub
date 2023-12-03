@@ -23,6 +23,7 @@
 
 .submitBtn {
   margin: 1.5em 0 !important;
+  cursor: pointer;
 }
 
 .link {
