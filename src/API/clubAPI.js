@@ -48,13 +48,10 @@ export const getClubById = async (clubId) => {
 };
 
 // Edit club
-export const editClub = async ({
-  name,
-  imageURL,
-  summary,
-  address,
-  phoneNumber,
-}) => {
+export const editClub = async (
+  { name, imageURL, summary, address, phoneNumber },
+  clubId
+) => {
   try {
     const clubData = await request.put(`${clubBaseURL}/${clubId}/edit`, {
       name,
