@@ -95,7 +95,12 @@ export default function ClubDetailsCard() {
           <Button size="small" variant="outlined" startIcon={<PersonAdd />}>
             Join Club
           </Button>
-          <Button size="small" variant="outlined" startIcon={<MeetingRoom />}>
+          <Button
+            size="small"
+            variant="outlined"
+            color="error"
+            startIcon={<MeetingRoom />}
+          >
             Leave Club
           </Button>
         </CardActions>
