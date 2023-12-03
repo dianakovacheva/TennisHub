@@ -95,7 +95,7 @@ export const joinClub = async (clubId) => {
 // Leave club
 export const leaveClub = async (clubId) => {
   try {
-    const club = await request.delete(`${clubBaseURL}/${clubId}/leave`);
+    const club = await request.remove(`${clubBaseURL}/${clubId}/leave`);
 
     return club;
   } catch (error) {
