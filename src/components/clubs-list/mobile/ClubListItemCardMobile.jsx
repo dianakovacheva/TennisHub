@@ -26,7 +26,7 @@ export default function ClubListItemCardMobile({
       />
       <img
         className={ClubListItemCardMobileCSS.clubImage}
-        src={`${imageURL}?w=164&h=164&fit=crop&auto=format`}
+        src={imageURL || "/images/placeholder-image.png"}
         alt={name}
         loading="lazy"
       />

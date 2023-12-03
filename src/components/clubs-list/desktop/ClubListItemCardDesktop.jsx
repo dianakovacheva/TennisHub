@@ -21,9 +21,10 @@ export default function ClubsListItemCard({
       <Box className={ClubListItemCardDesktopCSS.cardBox}>
         <img
           className={ClubListItemCardDesktopCSS.clubImage}
-          src={`${imageURL}?w=164&h=164&fit=crop&auto=format`}
+          src={imageURL || "/images/placeholder-image.png"}
           alt={name}
           loading="lazy"
+          //
         />
         <CardContent className={ClubListItemCardDesktopCSS.cardContent}>
           <Typography component="div" variant="h5">

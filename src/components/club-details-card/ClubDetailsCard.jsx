@@ -43,7 +43,7 @@ export default function ClubDetailsCard() {
         <CardMedia
           className={ClubDetailsCardCSS.cardMedia}
           component="img"
-          image={club.imageURL}
+          image={club.imageURL || "/images/placeholder-image.png"}
           alt={club.name}
         />
         <CardContent>
