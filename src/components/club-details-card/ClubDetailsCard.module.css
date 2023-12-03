@@ -14,15 +14,24 @@
 
 /* Action Btns */
 .cardActions {
-  margin-right: 3em !important;
+  margin-right: 1em !important;
   gap: 0.5em;
   justify-content: flex-end;
   margin-bottom: 1em;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1038px) {
   .cardActions {
-    justify-content: flex-start;
-    margin-left: 0.5em;
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0 auto !important;
+  }
+
+  button {
+    width: 100%;
+    margin: 0 !important;
   }
 }
