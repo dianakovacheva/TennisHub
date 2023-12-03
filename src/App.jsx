@@ -32,6 +32,7 @@ function App() {
         <Route element={<AuthGuard />}>
           <Route path="/create-club" element={<CreateClubForm />} />
           <Route path="/club/:clubId/edit" element={<EditClubForm />} />
+          <Route path="/club/:clubId/delete" element={<ClubDetails />} />
           <Route path="/book-court" element={<Calendar />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />

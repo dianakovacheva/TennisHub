@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import {
@@ -23,9 +23,11 @@ import {
 import * as ClubAPI from "../../API/clubAPI";
 
 import ClubDetailsCardCSS from "./ClubDetailsCard.module.css";
+import AuthContext from "../../contexts/AuthContext";
 
 export default function ClubDetailsCard() {
   const navigate = useNavigate();
+  const { userId } = useContext(AuthContext);
   const [club, setClub] = useState({});
   const { clubId } = useParams();
 
@@ -36,6 +38,14 @@ export default function ClubDetailsCard() {
   if (!club) {
     return <div>Loading...</div>;
   }
+
+  const isClubOwner = userId === club.manager?.find(() => true)._id;
+
+  const deleteClubHandler = async () => {
+    await ClubAPI.deleteClub(clubId);
+
+    navigate("/clubs");
+  };
 
   return (
     <>
@@ -86,9 +96,18 @@ export default function ClubDetailsCard() {
           <Button size="small" variant="outlined" startIcon={<Edit />}>
             Edit
           </Button>
-          <Button size="small" variant="outlined" startIcon={<Delete />}>
-            Delete
-          </Button>
+
+          {isClubOwner && (
+            <Button
+              size="small"
+              variant="outlined"
+              startIcon={<Delete />}
+              onClick={deleteClubHandler}
+            >
+              Delete
+            </Button>
+          )}
+
           <Button size="small" variant="outlined" startIcon={<Comment />}>
             Comment
           </Button>

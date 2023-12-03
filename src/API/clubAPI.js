@@ -73,7 +73,7 @@ export const editClub = async ({
 // Delete club
 export const deleteClub = async (clubId) => {
   try {
-    const club = await request.delete(`${clubBaseURL}/${clubId}/delete`);
+    const club = await request.remove(`${clubBaseURL}/${clubId}/delete`);
 
     return club;
   } catch (error) {
