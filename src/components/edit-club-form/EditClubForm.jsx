@@ -67,7 +67,7 @@ export default function EditClubForm() {
           <TextField
             required
             id="name"
-            name={club.name}
+            name="name"
             label="Club Name"
             fullWidth
             value={club.name}
@@ -80,7 +80,7 @@ export default function EditClubForm() {
           <TextField
             required
             id="address"
-            name={club.address}
+            name="address"
             label="Address"
             fullWidth
             value={club.address}
@@ -93,7 +93,7 @@ export default function EditClubForm() {
           <TextField
             required
             id="phoneNumber"
-            name={club.phoneNumber}
+            name="phoneNumber"
             label="Phone Number"
             fullWidth
             value={club.phoneNumber}
@@ -106,7 +106,7 @@ export default function EditClubForm() {
           <TextField
             required
             id="summary"
-            name={club.summary}
+            name="summary"
             label="Summary"
             fullWidth
             value={club.summary}
@@ -118,7 +118,7 @@ export default function EditClubForm() {
         <Grid item xs={12}>
           <TextField
             id="imageURL"
-            name={club.imageURL}
+            name="imageURL"
             label="Image URL"
             fullWidth
             value={club.imageURL}
