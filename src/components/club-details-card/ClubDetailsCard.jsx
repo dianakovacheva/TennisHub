@@ -18,6 +18,7 @@ import {
   Comment,
   PersonAdd,
   MeetingRoom,
+  Event,
 } from "@mui/icons-material";
 
 import * as ClubAPI from "../../API/clubAPI";
@@ -40,11 +41,18 @@ export default function ClubDetailsCard() {
   }
 
   const isClubOwner = userId === club.manager?.find(() => true)._id;
+  const hasJoinedClub = club.members?.includes(userId);
 
   const deleteClubHandler = async () => {
     await ClubAPI.deleteClub(clubId);
 
     navigate("/clubs");
+  };
+
+  const joinClubHandler = async () => {
+    await ClubAPI.joinClub(clubId);
+
+    navigate(`/club/${clubId}`);
   };
 
   return (
@@ -93,35 +101,52 @@ export default function ClubDetailsCard() {
           </Typography>
         </CardContent>
         <CardActions className={ClubDetailsCardCSS.cardActions}>
-          <Button size="small" variant="outlined" startIcon={<Edit />}>
-            Edit
-          </Button>
-
-          {isClubOwner && (
-            <Button
-              size="small"
-              variant="outlined"
-              startIcon={<Delete />}
-              onClick={deleteClubHandler}
-            >
-              Delete
+          {userId && (
+            <Button size="small" variant="outlined" startIcon={<Comment />}>
+              Comment
             </Button>
           )}
 
-          <Button size="small" variant="outlined" startIcon={<Comment />}>
-            Comment
-          </Button>
-          <Button size="small" variant="outlined" startIcon={<PersonAdd />}>
-            Join Club
-          </Button>
-          <Button
-            size="small"
-            variant="outlined"
-            color="error"
-            startIcon={<MeetingRoom />}
-          >
-            Leave Club
-          </Button>
+          {isClubOwner && (
+            <>
+              <Button
+                size="small"
+                variant="outlined"
+                startIcon={<Delete />}
+                onClick={deleteClubHandler}
+              >
+                Delete
+              </Button>
+              <Button size="small" variant="outlined" startIcon={<Edit />}>
+                Edit
+              </Button>
+            </>
+          )}
+          {hasJoinedClub && (
+            <>
+              <Button size="small" variant="outlined" startIcon={<Event />}>
+                Book Court
+              </Button>
+              <Button
+                size="small"
+                variant="outlined"
+                color="error"
+                startIcon={<MeetingRoom />}
+              >
+                Leave Club
+              </Button>
+            </>
+          )}
+          {!hasJoinedClub && userId && (
+            <Button
+              size="small"
+              variant="outlined"
+              startIcon={<PersonAdd />}
+              onClick={joinClubHandler}
+            >
+              Join Club
+            </Button>
+          )}
         </CardActions>
       </Card>
     </>
