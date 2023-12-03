@@ -23,7 +23,7 @@ export default function CommentsList() {
   return (
     <Container className={CommentsListCSS.commentsContainer}>
       <Typography className={CommentsListCSS.commentHeader}>
-        User Comments
+        User Comments ({comments.length})
       </Typography>
 
       {comments.map((commentObject) => (
