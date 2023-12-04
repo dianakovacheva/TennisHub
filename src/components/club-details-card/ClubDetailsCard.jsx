@@ -30,11 +30,12 @@ export default function ClubDetailsCard() {
   const navigate = useNavigate();
   const { userId } = useContext(AuthContext);
   const [club, setClub] = useState({});
+  const [refreshData, setRefreshData] = useState(false);
   const { clubId } = useParams();
 
   useEffect(() => {
     ClubAPI.getClubById(clubId).then(setClub);
-  }, [clubId]);
+  }, [clubId, refreshData]);
 
   if (!club) {
     return <div>Loading...</div>;
@@ -54,14 +55,15 @@ export default function ClubDetailsCard() {
   };
 
   const joinClubHandler = async () => {
-    await ClubAPI.joinClub(clubId);
+    const res = await ClubAPI.joinClub(clubId);
     console.log("Club joined!");
+    if (res) setRefreshData((status) => !status);
     navigate(`/club/${clubId}`);
   };
 
   const leaveClub = async () => {
-    await ClubAPI.leaveClub(clubId);
-
+    const res = await ClubAPI.leaveClub(clubId);
+    if (res) setRefreshData((status) => !status);
     console.log("Club left successfully!");
     navigate(`/club/${clubId}`);
   };
