@@ -3,13 +3,13 @@ import * as request from "../lib/request";
 const courtBaseUrl = "http://localhost:3000/api/club/court";
 
 // Create court
-export const createCourt = async (
+export const createCourt = async ({
   clubId,
   courtName,
   surface,
   indoor,
-  lighting
-) => {
+  lighting,
+}) => {
   try {
     const courtData = await request.post(`${courtBaseUrl}/create`, {
       clubId,
