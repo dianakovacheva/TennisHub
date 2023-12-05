@@ -66,3 +66,10 @@
     color: #ffffff !important;
   }
 }
+
+/* Main Section */
+.mainContainer {
+  flex-grow: 1;
+  height: 100vh;
+  overflow: auto;
+}
