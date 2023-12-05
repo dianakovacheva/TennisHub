@@ -8,18 +8,35 @@ import {
   Avatar,
 } from "@mui/material";
 
-import moment from "moment";
-
-import CommentItemCardCSS from "./CommentItemCard.module.css";
 import { Delete } from "@mui/icons-material";
 
+import moment from "moment";
+
+import * as commentAPI from "../../../API/commentAPI";
+import CommentItemCardCSS from "./CommentItemCard.module.css";
+import { useNavigate, useParams } from "react-router-dom";
+
 export default function CommentItemCard({ commentObject }) {
+  const commentId = commentObject._id;
+  const navigate = useNavigate();
+  const { clubId } = useParams();
+
   function getCommentSince(created_at) {
     if (!created_at) {
       return "";
     }
     return moment(created_at).fromNow();
   }
+
+  const deleteCommentHandler = async () => {
+    const response = await commentAPI.deleteComment(commentId);
+
+    if (response) {
+      console.log("Comment deleted successfully!");
+
+      navigate(`/club/${clubId}`);
+    }
+  };
 
   return (
     <>
@@ -47,6 +64,7 @@ export default function CommentItemCard({ commentObject }) {
             variant="outlined"
             startIcon={<Delete />}
             color="error"
+            onClick={deleteCommentHandler}
           >
             Delete
           </Button>
