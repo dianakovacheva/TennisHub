@@ -21,7 +21,7 @@ import {
   Event,
 } from "@mui/icons-material";
 
-import * as ClubAPI from "../../API/clubAPI";
+import * as clubAPI from "../../API/clubAPI";
 
 import ClubDetailsCardCSS from "./ClubDetailsCard.module.css";
 import AuthContext from "../../contexts/AuthContext";
@@ -34,7 +34,7 @@ export default function ClubDetailsCard() {
   const { clubId } = useParams();
 
   useEffect(() => {
-    ClubAPI.getClubById(clubId).then(setClub);
+    clubAPI.getClubById(clubId).then(setClub);
   }, [clubId, refreshData]);
 
   if (!club) {
@@ -49,20 +49,20 @@ export default function ClubDetailsCard() {
   };
 
   const deleteClubHandler = async () => {
-    await ClubAPI.deleteClub(clubId);
+    await clubAPI.deleteClub(clubId);
     console.log("Club deleted successfully!");
     navigate("/clubs");
   };
 
   const joinClubHandler = async () => {
-    const res = await ClubAPI.joinClub(clubId);
+    const res = await clubAPI.joinClub(clubId);
     console.log("Club joined!");
     if (res) setRefreshData((status) => !status);
     navigate(`/club/${clubId}`);
   };
 
   const leaveClub = async () => {
-    const res = await ClubAPI.leaveClub(clubId);
+    const res = await clubAPI.leaveClub(clubId);
     if (res) setRefreshData((status) => !status);
     console.log("Club left successfully!");
     navigate(`/club/${clubId}`);
