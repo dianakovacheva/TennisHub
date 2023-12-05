@@ -41,7 +41,7 @@ export const editComment = async (commentId) => {
 // Delete comment
 export const deleteComment = async (commentId) => {
   try {
-    const comment = await request.delete(
+    const comment = await request.remove(
       `${commentBaseURL}/${commentId}/delete`
     );
 
