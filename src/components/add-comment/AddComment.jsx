@@ -7,7 +7,6 @@ import {
   TextField,
 } from "@mui/material";
 
-import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as commentAPI from "../../API/commentAPI";
 
@@ -16,11 +15,6 @@ import AddCommentCSS from "./AddComment.module.css";
 export default function AddComment() {
   const navigate = useNavigate();
   const { clubId } = useParams();
-  const [refreshCommentsData, setRefreshCommentsData] = useState(false);
-
-  useEffect(() => {
-    commentAPI.getAllComments().then(setRefreshCommentsData);
-  }, [refreshCommentsData]);
 
   const addCommentHandler = async (e) => {
     e.preventDefault();
@@ -28,10 +22,10 @@ export default function AddComment() {
     const commentData = Object.fromEntries(new FormData(e.currentTarget));
 
     try {
-      const response = await commentAPI.addComment({ ...commentData }, clubId);
+      const response = await commentAPI.addComment(commentData, clubId);
 
       if (response) {
-        setRefreshCommentsData((status) => !status);
+        console.log("Comment added successfully!");
 
         navigate(`/club/${clubId}`);
       }
