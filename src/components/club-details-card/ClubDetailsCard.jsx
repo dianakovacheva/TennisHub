@@ -19,9 +19,11 @@ import {
   PersonAdd,
   MeetingRoom,
   Event,
+  AddCircle,
 } from "@mui/icons-material";
 
 import * as clubAPI from "../../API/clubAPI";
+import * as bookingAPI from "../../API/bookingAPI";
 
 import ClubDetailsCardCSS from "./ClubDetailsCard.module.css";
 import AuthContext from "../../contexts/AuthContext";
@@ -48,6 +50,10 @@ export default function ClubDetailsCard() {
     navigate(`/club/${clubId}/edit`);
   };
 
+  const addCourtHandler = () => {
+    navigate(`/club/${clubId}/add-court`);
+  };
+
   const deleteClubHandler = async () => {
     await clubAPI.deleteClub(clubId);
     console.log("Club deleted successfully!");
@@ -56,8 +62,10 @@ export default function ClubDetailsCard() {
 
   const joinClubHandler = async () => {
     const res = await clubAPI.joinClub(clubId);
+
     console.log("Club joined!");
-    if (res) setRefreshData((status) => !status);
+
+    if (res.joinedClub.ok) setRefreshData((status) => !status);
     navigate(`/club/${clubId}`);
   };
 
@@ -114,14 +122,22 @@ export default function ClubDetailsCard() {
           </Typography>
         </CardContent>
         <CardActions className={ClubDetailsCardCSS.cardActions}>
-          {userId && (
+          {/* {userId && (
             <Button size="small" variant="outlined" startIcon={<Comment />}>
               Comment
             </Button>
-          )}
+          )} */}
 
           {isClubOwner && (
             <>
+              <Button
+                size="small"
+                variant="outlined"
+                startIcon={<AddCircle />}
+                onClick={addCourtHandler}
+              >
+                Add Court
+              </Button>
               <Button
                 size="small"
                 variant="outlined"
