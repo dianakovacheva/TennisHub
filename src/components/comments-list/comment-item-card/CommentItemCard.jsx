@@ -8,17 +8,22 @@ import {
   Avatar,
 } from "@mui/material";
 
+import { useContext } from "react";
 import { Delete } from "@mui/icons-material";
 
 import moment from "moment";
 
 import CommentItemCardCSS from "./CommentItemCard.module.css";
+import AuthContext from "../../../contexts/AuthContext";
 
 export default function CommentItemCard({
   commentObject,
   deleteCommentHandler,
 }) {
   const commentId = commentObject._id;
+  const { userId } = useContext(AuthContext);
+
+  const isCommentOwner = userId === commentObject.commentAuthor._id;
 
   function getCommentSince(created_at) {
     if (!created_at) {
@@ -64,17 +69,19 @@ export default function CommentItemCard({
 
           <Typography>{commentObject?.comment}</Typography>
         </CardContent>
-        <CardActions className={CommentItemCardCSS.cardActions}>
-          <Button
-            size="small"
-            variant="outlined"
-            startIcon={<Delete />}
-            color="error"
-            onClick={() => deleteCommentHandler(commentId)}
-          >
-            Delete
-          </Button>
-        </CardActions>
+        {isCommentOwner && (
+          <CardActions className={CommentItemCardCSS.cardActions}>
+            <Button
+              size="small"
+              variant="outlined"
+              startIcon={<Delete />}
+              color="error"
+              onClick={() => deleteCommentHandler(commentId)}
+            >
+              Delete
+            </Button>
+          </CardActions>
+        )}
       </Card>
     </>
   );
