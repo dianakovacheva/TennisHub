@@ -17,6 +17,9 @@ import AuthContext from "./contexts/AuthContext";
 import CreateClubForm from "./components/create-club-form/CreateClubForm";
 import EditClubForm from "./components/edit-club-form/EditClubForm";
 import ClubDetails from "./components/club-details/ClubDetails";
+import CommentsList from "./components/comments-list/CommentsList";
+import CreateCourt from "./components/create-court/CreateCourt";
+import AddComment from "./components/add-comment/AddComment";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -33,7 +36,7 @@ function App() {
           <Route path="/create-club" element={<CreateClubForm />} />
           <Route path="/club/:clubId/edit" element={<EditClubForm />} />
           <Route path="/club/:clubId/delete" element={<ClubDetails />} />
-          <Route path="/club/:clubId/add-comment" element={<ClubDetails />} />
+          <Route path="/club/:clubId/add-court" element={<CreateCourt />} />
           <Route path="/book-court" element={<Calendar />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
