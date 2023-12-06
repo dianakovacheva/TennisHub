@@ -12,14 +12,13 @@ import { Delete } from "@mui/icons-material";
 
 import moment from "moment";
 
-import * as commentAPI from "../../../API/commentAPI";
 import CommentItemCardCSS from "./CommentItemCard.module.css";
-import { useNavigate, useParams } from "react-router-dom";
 
-export default function CommentItemCard({ commentObject }) {
+export default function CommentItemCard({
+  commentObject,
+  deleteCommentHandler,
+}) {
   const commentId = commentObject._id;
-  const navigate = useNavigate();
-  const { clubId } = useParams();
 
   function getCommentSince(created_at) {
     if (!created_at) {
@@ -28,15 +27,22 @@ export default function CommentItemCard({ commentObject }) {
     return moment(created_at).fromNow();
   }
 
-  const deleteCommentHandler = async () => {
-    const response = await commentAPI.deleteComment(commentId);
+  // const deleteCommentHandler = async () => {
+  //   const [deleteComment, setDeleteComment] = useState(false);
 
-    if (response) {
-      console.log("Comment deleted successfully!");
+  //   try {
+  //     const response = await commentAPI.deleteComment(commentId);
 
-      navigate(`/club/${clubId}`);
-    }
-  };
+  //     if (response) {
+  //       console.log("Comment deleted successfully!");
+
+  //       setDeleteComment((curr) => !curr);
+  //       navigate(`/club/${clubId}`);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <>
@@ -44,11 +50,11 @@ export default function CommentItemCard({ commentObject }) {
         <CardContent>
           <div className={CommentItemCardCSS.commentDataContainer}>
             <Avatar>
-              {`${commentObject.commentAuthor.firstName[0]}${commentObject.commentAuthor.lastName[0]}`}
+              {`${commentObject?.commentAuthor.firstName[0]}${commentObject?.commentAuthor.lastName[0]}`}
             </Avatar>
             <Stack className={CommentItemCardCSS.commentInfo}>
               <Typography className={CommentItemCardCSS.commentAuthor}>
-                {`${commentObject.commentAuthor.firstName} ${commentObject.commentAuthor.lastName}`}
+                {`${commentObject?.commentAuthor.firstName} ${commentObject?.commentAuthor.lastName}`}
               </Typography>
               <Typography color="text.secondary">
                 {getCommentSince(commentObject.created_at)}
@@ -56,7 +62,7 @@ export default function CommentItemCard({ commentObject }) {
             </Stack>
           </div>
 
-          <Typography>{commentObject.comment}</Typography>
+          <Typography>{commentObject?.comment}</Typography>
         </CardContent>
         <CardActions className={CommentItemCardCSS.cardActions}>
           <Button
@@ -64,7 +70,7 @@ export default function CommentItemCard({ commentObject }) {
             variant="outlined"
             startIcon={<Delete />}
             color="error"
-            onClick={deleteCommentHandler}
+            onClick={() => deleteCommentHandler(commentId)}
           >
             Delete
           </Button>
