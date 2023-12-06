@@ -7,37 +7,50 @@ import {
   TextField,
 } from "@mui/material";
 
-import { useNavigate, useParams } from "react-router-dom";
-import * as commentAPI from "../../API/commentAPI";
+import { useState } from "react";
+// import { useNavigate, useParams } from "react-router-dom";
 
+// import * as commentAPI from "../../API/commentAPI";
 import AddCommentCSS from "./AddComment.module.css";
 
-export default function AddComment() {
-  const navigate = useNavigate();
-  const { clubId } = useParams();
+export default function AddComment({ addComment }) {
+  // const navigate = useNavigate();
+  // const { clubId } = useParams();
+  const [newComment, setNewComment] = useState("");
 
-  const addCommentHandler = async (e) => {
+  const handleCommentSubmit = async (e) => {
     e.preventDefault();
-
-    const commentData = Object.fromEntries(new FormData(e.currentTarget));
-
-    try {
-      const response = await commentAPI.addComment(commentData, clubId);
-
-      if (response) {
-        console.log("Comment added successfully!");
-
-        navigate(`/club/${clubId}`);
-      }
-    } catch (error) {
-      console.log(error);
+    if (newComment.trim().length < 2) {
+      throw new Error("The comment must be at least 2 characters long.");
     }
+
+    await addComment(newComment);
+    e.target.reset();
+    setNewComment("");
   };
+
+  // const addCommentHandler = async (e) => {
+  //   e.preventDefault();
+
+  //   const commentData = Object.fromEntries(new FormData(e.currentTarget));
+
+  //   try {
+  //     const response = await commentAPI.addComment(commentData, clubId);
+
+  //     if (response) {
+  //       console.log("Comment added successfully!");
+
+  //       navigate(`/club/${clubId}`);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <Card
       component="form"
-      onSubmit={addCommentHandler}
+      onSubmit={handleCommentSubmit}
       className={AddCommentCSS.commentContainer}
     >
       <CardContent className={AddCommentCSS.cardContent}>
@@ -54,6 +67,7 @@ export default function AddComment() {
           multiline
           rows={4}
           variant="filled"
+          onChange={(e) => setNewComment(e.target.value)}
         />
       </CardContent>
       <CardActions className={AddCommentCSS.cardActions}>
