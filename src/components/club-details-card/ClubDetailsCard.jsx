@@ -155,16 +155,18 @@ export default function ClubDetailsCard() {
               <Button size="small" variant="outlined" startIcon={<Event />}>
                 Book Court
               </Button>
-              <Button
-                size="small"
-                variant="outlined"
-                color="error"
-                startIcon={<MeetingRoom />}
-                onClick={leaveClub}
-              >
-                Leave Club
-              </Button>
             </>
+          )}
+          {!isClubOwner && hasJoinedClub && (
+            <Button
+              size="small"
+              variant="outlined"
+              color="error"
+              startIcon={<MeetingRoom />}
+              onClick={leaveClub}
+            >
+              Leave Club
+            </Button>
           )}
           {!hasJoinedClub && userId && (
             <Button
