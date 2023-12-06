@@ -1,12 +1,17 @@
 import * as React from "react";
+import { useContext } from "react";
+
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import FormFooter from "./FormFooter";
-import LoginForm from "../loginForm/LoginForm";
-import RegisterForm from "../registerForm/RegisterForm";
+import LoginForm from "../login/Login";
+import RegisterForm from "../register/Register";
+import AuthContext from "../../contexts/AuthContext";
 
 export default function SideForms() {
+  const { isAuthenticated } = useContext(AuthContext);
+
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
       <CssBaseline />
@@ -16,8 +21,7 @@ export default function SideForms() {
         sm={4}
         md={7}
         sx={{
-          backgroundImage:
-            "url(../../../public/images/tennis-sign-in-page.jpg)",
+          backgroundImage: "url(/images/tennis-sign-in-page.jpg)",
           backgroundRepeat: "no-repeat",
           backgroundColor: (t) =>
             t.palette.mode === "light"
@@ -28,9 +32,9 @@ export default function SideForms() {
         }}
       />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        {/* <LoginForm /> */}
-        <RegisterForm />
-        <FormFooter />
+        {!isAuthenticated && <LoginForm />}
+        {!isAuthenticated && <RegisterForm />}
+        {/* <FormFooter /> */}
       </Grid>
     </Grid>
   );
