@@ -75,6 +75,7 @@ export default function ClubDetails() {
       <ClubDetailsCard />
 
       {/* <CourtsList /> */}
+
       <Divider className={ClubDetailsCSS.divider} variant="middle" />
 
       {userId && <AddComment addComment={addComment} />}

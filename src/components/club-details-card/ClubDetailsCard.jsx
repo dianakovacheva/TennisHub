@@ -122,12 +122,6 @@ export default function ClubDetailsCard() {
           </Typography>
         </CardContent>
         <CardActions className={ClubDetailsCardCSS.cardActions}>
-          {/* {userId && (
-            <Button size="small" variant="outlined" startIcon={<Comment />}>
-              Comment
-            </Button>
-          )} */}
-
           {isClubOwner && (
             <>
               <Button
