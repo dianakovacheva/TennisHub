@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -12,6 +12,7 @@ import ClubDetailsCSS from "./ClubDetails.module.css";
 import CourtsList from "../courts-list/CourtsList";
 import * as clubAPI from "../../API/clubAPI";
 import * as commentAPI from "../../API/commentAPI";
+import AuthContext from "../../contexts/AuthContext";
 
 export default function ClubDetails() {
   const [comments, setComments] = useState([]);
@@ -19,6 +20,7 @@ export default function ClubDetails() {
   const [deleteComment, setDeleteComment] = useState(false);
   const { clubId } = useParams();
   const navigate = useNavigate();
+  const { userId } = useContext(AuthContext);
 
   useEffect(() => {
     clubAPI
@@ -74,7 +76,9 @@ export default function ClubDetails() {
 
       {/* <CourtsList /> */}
       <Divider className={ClubDetailsCSS.divider} variant="middle" />
-      <AddComment addComment={addComment} />
+
+      {userId && <AddComment addComment={addComment} />}
+
       <CommentsList
         comments={comments}
         deleteCommentHandler={deleteCommentHandler}
