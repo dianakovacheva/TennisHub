@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import * as request from "../lib/request";
 
 const commentBaseURL = "http://localhost:3000/api/comments";
@@ -7,7 +8,7 @@ export const addComment = async (comment, clubId) => {
   try {
     const commentData = await request.post(
       `${commentBaseURL}/club/${clubId}/add-comment`,
-      comment
+      { comment }
     );
 
     return commentData;
