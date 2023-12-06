@@ -1,0 +1,21 @@
+.courtContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+.courtDataContainer {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.courtAuthor {
+  font-size: 1em;
+  font-weight: 600 !important;
+}
+
+.cardActions {
+  align-self: flex-end !important;
+}
