@@ -45,39 +45,50 @@ export default function Calendar() {
       });
   }, []);
 
+  let numCourts = courts.length;
+
   return (
-    <div className="calendar-container">
-      <BigCalendar
-        culture="de-DE"
-        localizer={localizer}
-        events={bookings}
-        startAccessor="start"
-        endAccessor="end"
-        titleAccessor="title"
-        defaultView="day"
-        views={["day"]}
-        min={moment("1972-01-01T07:00:00").toDate()}
-        max={moment("2100-12-31T21:30:00").toDate()}
-        resources={courts.map((court) => ({
-          id: court._id,
-          title: court.courtName,
-        }))}
-        resourceIdAccessor="id"
-        resourceTitleAccessor="title"
-        formats={{
-          dayHeaderFormat: (date) => moment(date).format("dddd, D MMMM Y"),
-          eventTimeRangeFormat: ({ start, end }, culture, localizer) =>
-            localizer.format(start, "HH:mm", culture) +
-            " - " +
-            localizer.format(end, "HH:mm", culture),
-          timeGutterFormat: (date, culture, localizer) =>
-            localizer.format(date, "HH:mm", culture),
-        }}
-        messages={{
-          next: "→",
-          previous: "←",
-        }}
-      />
-    </div>
+    <>
+      <div className="calendar-container">
+        {!numCourts && (
+          <div>
+            <p>No courts yet</p>
+          </div>
+        )}
+        {!!numCourts && (
+          <BigCalendar
+            culture="de-DE"
+            localizer={localizer}
+            events={bookings}
+            startAccessor="start"
+            endAccessor="end"
+            titleAccessor="title"
+            defaultView="day"
+            views={["day"]}
+            min={moment("1972-01-01T07:00:00").toDate()}
+            max={moment("2100-12-31T21:30:00").toDate()}
+            resources={courts.map((court) => ({
+              id: court._id,
+              title: court.courtName,
+            }))}
+            resourceIdAccessor="id"
+            resourceTitleAccessor="title"
+            formats={{
+              dayHeaderFormat: (date) => moment(date).format("dddd, D MMMM Y"),
+              eventTimeRangeFormat: ({ start, end }, culture, localizer) =>
+                localizer.format(start, "HH:mm", culture) +
+                " - " +
+                localizer.format(end, "HH:mm", culture),
+              timeGutterFormat: (date, culture, localizer) =>
+                localizer.format(date, "HH:mm", culture),
+            }}
+            messages={{
+              next: "→",
+              previous: "←",
+            }}
+          />
+        )}
+      </div>
+    </>
   );
 }
