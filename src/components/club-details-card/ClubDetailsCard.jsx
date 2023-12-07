@@ -135,18 +135,18 @@ export default function ClubDetailsCard() {
               <Button
                 size="small"
                 variant="outlined"
-                startIcon={<Delete />}
-                onClick={deleteClubHandler}
-              >
-                Delete
-              </Button>
-              <Button
-                size="small"
-                variant="outlined"
                 startIcon={<Edit />}
                 onClick={editClubHandler}
               >
                 Edit
+              </Button>
+              <Button
+                size="small"
+                variant="outlined"
+                startIcon={<Delete />}
+                onClick={deleteClubHandler}
+              >
+                Delete
               </Button>
             </>
           )}
