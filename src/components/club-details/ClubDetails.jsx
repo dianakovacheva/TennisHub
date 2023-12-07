@@ -6,7 +6,7 @@ import AddComment from "../add-comment/AddComment";
 import ClubDetailsCard from "../club-details-card/ClubDetailsCard";
 import CommentsList from "../comments-list/CommentsList";
 
-import { Divider, Fab } from "@mui/material";
+import { Divider } from "@mui/material";
 
 import ClubDetailsCSS from "./ClubDetails.module.css";
 import CourtsList from "../courts-list/CourtsList";
@@ -32,18 +32,10 @@ export default function ClubDetails() {
   }, [toggleRefresh, deleteComment]);
 
   const addComment = async (newComment) => {
-    // e.preventDefault();
-
-    // const commentData = Object.fromEntries(new FormData(e.currentTarget));
-
     try {
-      // const response = await commentAPI.addComment(commentData, clubId);
-
       const response = await commentAPI.addComment(newComment, clubId);
 
       if (response) {
-        // setComments([...comments, response]);
-
         console.log("Comment added successfully!");
 
         setToggleRefresh((curr) => !curr);
@@ -74,16 +66,16 @@ export default function ClubDetails() {
     <div className={ClubDetailsCSS.detailsPageContainer}>
       <ClubDetailsCard />
 
-      {/* <CourtsList /> */}
+      <CourtsList />
 
       <Divider className={ClubDetailsCSS.divider} variant="middle" />
-
-      {userId && <AddComment addComment={addComment} />}
 
       <CommentsList
         comments={comments}
         deleteCommentHandler={deleteCommentHandler}
       />
+
+      {userId && <AddComment addComment={addComment} />}
     </div>
   );
 }
