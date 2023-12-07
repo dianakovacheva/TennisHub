@@ -26,9 +26,17 @@ export default function UserHome() {
 
   return (
     <Box className={UserHomeCSS.statisticCardsSection}>
-      <UserJoinedClubs userData={userData} />
-      <UserCreatedClubs userData={userData} />
-      <UserBookings userData={userData} />
+      {userData?.userCreatedClubs.length > 0 && (
+        <UserCreatedClubs userData={userData} />
+      )}
+
+      {userData?.userJoinedClubs.length > 0 && (
+        <UserJoinedClubs userData={userData} />
+      )}
+
+      {userData?.userBookings.length > 0 && (
+        <UserBookings userData={userData} />
+      )}
     </Box>
   );
 }
