@@ -3,6 +3,7 @@ import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import GuestHome from "./guest/GuestHome";
 import UserHome from "./user/UserHome";
+import NewUserHome from "./new-user/NewUserHome";
 
 export default function HomeWrapper() {
   const { isAuthenticated, userJoinedClubs } = useContext(AuthContext);
@@ -11,7 +12,7 @@ export default function HomeWrapper() {
 
   return (
     <>
-      {isNewUser && <p>New User Home</p>}
+      {isNewUser && <NewUserHome />}
       {isAuthenticated && <UserHome />}
       {!isAuthenticated && <GuestHome />}
     </>
