@@ -37,21 +37,12 @@ export const createCourt = async ({
 // };
 
 // Edit court
-export const editCourt = async (
-  clubId,
-  courtName,
-  surface,
-  indoor,
-  lighting
-) => {
+export const editCourt = async (court) => {
+  const { courtId, clubId, courtName, surface, indoor, lighting } = court;
   try {
     const courtData = await request.put(
-      `${courtBaseUrl}/court/${courtId}/edit`,
-      clubId,
-      courtName,
-      surface,
-      indoor,
-      lighting
+      `${courtBaseUrl}/${clubId}/court/${courtId}/edit`,
+      { clubId, courtName, surface, indoor, lighting }
     );
 
     return courtData;
