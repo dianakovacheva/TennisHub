@@ -17,17 +17,32 @@ import {
 } from "@mui/icons-material";
 
 import * as courtAPI from "../../../API/courtAPI";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function CourtsTable({
   isClubOwner,
   courts,
   requestRefreshHandler,
 }) {
+  const navigate = useNavigate();
+
+  const editCourtHandler = async (courtId, clubId) => {
+    // try {
+    //   const respone = await courtAPI.editCourt(courtId, clubId);
+
+    //   if (respone._id) {
+    //     navigate(`/club/${clubId}/court/${courtId}/edit-court`);
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+    navigate(`/club/${clubId}/court/${courtId}/edit-court`);
+  };
+
   const deleteCourtHandler = async (courtId, clubId) => {
     try {
       const response = await courtAPI.deleteCourt(courtId, clubId);
-      console.log(response);
 
       if (response._id) {
         requestRefreshHandler();
@@ -36,6 +51,7 @@ export default function CourtsTable({
       console.log(error);
     }
   };
+
   return (
     <>
       {courts.length > 0 && (
@@ -70,7 +86,7 @@ export default function CourtsTable({
                     )}
                   </TableCell>
                   <TableCell component="th" scope="row" align="center">
-                    {courtObject.lightning ? (
+                    {courtObject.lighting ? (
                       <CheckAvailable />
                     ) : (
                       <CheckUnavailable />
@@ -78,7 +94,15 @@ export default function CourtsTable({
                   </TableCell>
                   {isClubOwner && (
                     <TableCell component="th" scope="row" align="center">
-                      <Button startIcon={<Edit />}></Button>
+                      <Button
+                        startIcon={<Edit />}
+                        onClick={() =>
+                          editCourtHandler(
+                            courtObject?._id,
+                            courtObject?.clubId
+                          )
+                        }
+                      ></Button>
                       <Button
                         startIcon={<Delete />}
                         onClick={() =>
