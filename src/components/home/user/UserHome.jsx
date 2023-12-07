@@ -24,18 +24,20 @@ export default function UserHome() {
       });
   }, [userId]);
 
+  const newUser =
+    userData.userCreatedClubs !== undefined &&
+    userData.userCreatedClubs.length === 0 &&
+    userData.userJoinedClubs !== undefined &&
+    userData.userJoinedClubs.length === 0;
+
   return (
     <Box className={UserHomeCSS.statisticCardsSection}>
-      {userData?.userCreatedClubs.length > 0 && (
-        <UserCreatedClubs userData={userData} />
-      )}
-
-      {userData?.userJoinedClubs.length > 0 && (
-        <UserJoinedClubs userData={userData} />
-      )}
-
-      {userData?.userBookings.length > 0 && (
-        <UserBookings userData={userData} />
+      {!newUser && (
+        <>
+          <UserJoinedClubs userData={userData} />
+          <UserCreatedClubs userData={userData} />
+          <UserBookings userData={userData} />
+        </>
       )}
     </Box>
   );
