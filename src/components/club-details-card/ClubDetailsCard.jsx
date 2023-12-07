@@ -15,7 +15,6 @@ import {
 import {
   Edit,
   Delete,
-  Comment,
   PersonAdd,
   MeetingRoom,
   Event,
@@ -23,28 +22,32 @@ import {
 } from "@mui/icons-material";
 
 import * as clubAPI from "../../API/clubAPI";
-import * as bookingAPI from "../../API/bookingAPI";
 
 import ClubDetailsCardCSS from "./ClubDetailsCard.module.css";
 import AuthContext from "../../contexts/AuthContext";
 
-export default function ClubDetailsCard() {
+export default function ClubDetailsCard({
+  isClubOwner,
+  hasJoinedClub,
+  requestRefreshHandler,
+  club,
+}) {
   const navigate = useNavigate();
   const { userId } = useContext(AuthContext);
-  const [club, setClub] = useState({});
-  const [refreshData, setRefreshData] = useState(false);
+  // const [club, setClub] = useState({});
+  // const [refreshData, setRefreshData] = useState(false);
   const { clubId } = useParams();
 
-  useEffect(() => {
-    clubAPI.getClubById(clubId).then(setClub);
-  }, [clubId, refreshData]);
+  // useEffect(() => {
+  //   clubAPI.getClubById(clubId).then(setClub);
+  // }, [clubId, refreshData]);
 
   if (!club) {
     return <div>Loading...</div>;
   }
 
-  const isClubOwner = userId === club.manager?.find(() => true)._id;
-  const hasJoinedClub = club.members?.includes(userId);
+  // const isClubOwner = userId === club.manager?.find(() => true)._id;
+  // const hasJoinedClub = club.members?.includes(userId);
 
   const editClubHandler = () => {
     navigate(`/club/${clubId}/edit`);
@@ -65,13 +68,13 @@ export default function ClubDetailsCard() {
 
     console.log("Club joined!");
 
-    if (res.joinedClub.ok) setRefreshData((status) => !status);
+    if (res.joinedClub.ok) requestRefreshHandler();
     navigate(`/club/${clubId}`);
   };
 
   const leaveClub = async () => {
     const res = await clubAPI.leaveClub(clubId);
-    if (res) setRefreshData((status) => !status);
+    if (res) requestRefreshHandler();
     console.log("Club left successfully!");
     navigate(`/club/${clubId}`);
   };
