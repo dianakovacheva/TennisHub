@@ -5,16 +5,22 @@ import GuestHome from "./guest/GuestHome";
 import UserHome from "./user/UserHome";
 import NewUserHome from "./new-user/NewUserHome";
 
-export default function HomeWrapper() {
-  const { isAuthenticated, userJoinedClubs } = useContext(AuthContext);
+import HomeWrapperCSS from "./HomeWrapper.module.css";
 
-  const isNewUser = isAuthenticated && userJoinedClubs.length === 0;
+export default function HomeWrapper() {
+  const { isAuthenticated, userJoinedClubs, userCreatedClubs } =
+    useContext(AuthContext);
+
+  const isNewUser =
+    isAuthenticated &&
+    userJoinedClubs.length === 0 &&
+    userCreatedClubs.length === 0;
 
   return (
-    <>
+    <div className={HomeWrapperCSS.homeWrapperContainer}>
       {isNewUser && <NewUserHome />}
       {isAuthenticated && <UserHome />}
       {!isAuthenticated && <GuestHome />}
-    </>
+    </div>
   );
 }
