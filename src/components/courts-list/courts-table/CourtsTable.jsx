@@ -17,15 +17,16 @@ import {
 } from "@mui/icons-material";
 
 import * as courtAPI from "../../../API/courtAPI";
+import { useParams } from "react-router-dom";
 
 export default function CourtsTable({
   isClubOwner,
   courts,
   requestRefreshHandler,
 }) {
-  const deleteCourtHandler = async (courtId) => {
+  const deleteCourtHandler = async (courtId, clubId) => {
     try {
-      const response = await courtAPI.deleteCourt(courtId);
+      const response = await courtAPI.deleteCourt(courtId, clubId);
       console.log(response);
 
       if (response._id) {
@@ -80,7 +81,12 @@ export default function CourtsTable({
                       <Button startIcon={<Edit />}></Button>
                       <Button
                         startIcon={<Delete />}
-                        onClick={() => deleteCourtHandler(courtObject._id)}
+                        onClick={() =>
+                          deleteCourtHandler(
+                            courtObject._id,
+                            courtObject.clubId
+                          )
+                        }
                       ></Button>
                     </TableCell>
                   )}
