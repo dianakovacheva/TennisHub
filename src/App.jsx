@@ -17,9 +17,7 @@ import AuthContext from "./contexts/AuthContext";
 import CreateClubForm from "./components/create-club-form/CreateClubForm";
 import EditClubForm from "./components/edit-club-form/EditClubForm";
 import ClubDetails from "./components/club-details/ClubDetails";
-import CommentsList from "./components/comments-list/CommentsList";
 import CreateCourt from "./components/create-court/CreateCourt";
-import AddComment from "./components/add-comment/AddComment";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
