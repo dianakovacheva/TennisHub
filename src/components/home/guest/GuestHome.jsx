@@ -1,11 +1,8 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
+
 import { Link } from "react-router-dom";
 
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import { Button, Stack, Box, Typography, Container } from "@mui/material";
 
 import GuestHomeCSS from "./GuestHome.module.css";
 import ClubsList from "../../clubs-list/ClubsList";
