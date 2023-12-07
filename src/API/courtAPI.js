@@ -63,7 +63,7 @@ export const editCourt = async (
 // Delete court
 export const deleteCourt = async (courtId) => {
   try {
-    const court = await request.delete(`${courtBaseUrl}/${courtId}/delete`);
+    const court = await request.remove(`${courtBaseUrl}/${courtId}/delete`);
 
     return court;
   } catch (error) {
