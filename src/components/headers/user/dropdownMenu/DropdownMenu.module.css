@@ -3,6 +3,10 @@
   flex-grow: 0 !important;
 }
 
+.avatar {
+  padding: 1em;
+}
+
 .avatarIconButton {
   padding: 0 !important;
 }

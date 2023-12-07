@@ -11,6 +11,10 @@
   gap: 1em;
 }
 
+.avatar {
+  padding: 1em;
+}
+
 .commentAuthor {
   font-size: 1em;
   font-weight: 600 !important;

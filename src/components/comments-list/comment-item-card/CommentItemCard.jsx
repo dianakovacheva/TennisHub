@@ -54,7 +54,7 @@ export default function CommentItemCard({
       <Card className={CommentItemCardCSS.commentContainer}>
         <CardContent>
           <div className={CommentItemCardCSS.commentDataContainer}>
-            <Avatar>
+            <Avatar className={CommentItemCardCSS.avatar}>
               {`${commentObject?.commentAuthor.firstName[0]}${commentObject?.commentAuthor.lastName[0]}`}
             </Avatar>
             <Stack className={CommentItemCardCSS.commentInfo}>
