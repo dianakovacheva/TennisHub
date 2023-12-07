@@ -27,8 +27,6 @@ export default function CourtItemCard(courtObject) {
     clubAPI.getClubById(clubId).then(setClub);
   }, [clubId]);
 
-  console.log({ ...courtObject });
-
   const hasJoinedClub = club.members?.includes(userId);
 
   // const bookCourt = async () => {
@@ -38,38 +36,21 @@ export default function CourtItemCard(courtObject) {
 
   return (
     <>
-      <Card className={CourtItemCardCSS.courtContainer}>
-        <CardContent>
-          <div className={CourtItemCardCSS.courtDataContainer}>
-            <Stack className={CourtItemCardCSS.courtInfo}>
-              <Typography className={CourtItemCardCSS.courtAuthor}>
-                {`${courtObject.courtObject.courtName}`}
-              </Typography>
-            </Stack>
-          </div>
-        </CardContent>
-        <CardActions className={CourtItemCardCSS.cardActions}>
-          {hasJoinedClub && (
-            <>
-              <Button size="small" variant="outlined" startIcon={<Event />}>
-                Book Court
-              </Button>
-              <Button size="small" variant="outlined" startIcon={<Edit />}>
-                Edit
-              </Button>
-              {/* <Button
-                size="small"
-                variant="outlined"
-                color="error"
-                startIcon={<MeetingRoom />}
-                onClick={leaveClub}
-              >
-                Leave Club
-              </Button> */}
-            </>
-          )}
-        </CardActions>
-      </Card>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell align="center">Court Name</TableCell>
+              <TableCell align="center">Surface</TableCell>
+              <TableCell align="center">Indoor</TableCell>
+              <TableCell align="center">Lighting</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 }
