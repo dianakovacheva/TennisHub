@@ -1,0 +1,15 @@
+.actionBtnsStack {
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: center;
+  gap: 3em;
+  margin-bottom: 5em;
+}
+
+@media screen and (max-width: 600px) {
+  .actionBtnsStack {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+}
