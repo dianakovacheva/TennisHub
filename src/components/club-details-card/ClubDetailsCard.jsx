@@ -34,20 +34,12 @@ export default function ClubDetailsCard({
 }) {
   const navigate = useNavigate();
   const { userId } = useContext(AuthContext);
-  // const [club, setClub] = useState({});
-  // const [refreshData, setRefreshData] = useState(false);
-  const { clubId } = useParams();
 
-  // useEffect(() => {
-  //   clubAPI.getClubById(clubId).then(setClub);
-  // }, [clubId, refreshData]);
+  const { clubId } = useParams();
 
   if (!club) {
     return <div>Loading...</div>;
   }
-
-  // const isClubOwner = userId === club.manager?.find(() => true)._id;
-  // const hasJoinedClub = club.members?.includes(userId);
 
   const editClubHandler = () => {
     navigate(`/club/${clubId}/edit`);
@@ -153,7 +145,7 @@ export default function ClubDetailsCard({
               </Button>
             </>
           )}
-          {hasJoinedClub && (
+          {hasJoinedClub && club.courts.length > 0 && (
             <>
               <Button size="small" variant="outlined" startIcon={<Event />}>
                 Book Court
