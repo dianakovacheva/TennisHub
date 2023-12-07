@@ -7,6 +7,7 @@ import * as clubAPI from "../../API/clubAPI";
 import CourtItemCard from "./court-item-card/CourtItemCard";
 
 import CourtsListCSS from "./CourtsList.module.css";
+import NoCourts from "../no-courts/NoCourts";
 
 export default function CourtsList() {
   const [courts, setCourts] = useState([]);
@@ -31,7 +32,7 @@ export default function CourtsList() {
         <CourtItemCard key={courtObject._id} courtObject={courtObject} />
       ))}
 
-      {/* {courts.length === 0 && <Nocourts />} */}
+      {courts.length === 0 && <NoCourts />}
     </Container>
   );
 }
