@@ -1,0 +1,50 @@
+.statisticCardsContainer {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  flex-wrap: wrap;
+  overflow: hidden;
+  gap: 2em;
+  height: 75vh;
+}
+
+.cardHolder {
+  width: 350px;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+/* Card Content Left */
+.cardContentLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Groups Icon */
+.groupsIcon {
+  width: 2em !important;
+  height: 2em !important;
+  color: #1976d2;
+}
+
+@media screen and (max-width: 600px) {
+  .statisticCardsContainer {
+    display: flex;
+    flex-direction: column !important;
+    margin: auto;
+    overflow: auto;
+    flex-wrap: nowrap;
+    height: 100%;
+    margin-bottom: 3em;
+  }
+
+  .cardHolder {
+    align-items: baseline;
+    justify-content: space-between;
+    height: auto !important;
+  }
+}

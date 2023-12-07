@@ -1,13 +1,13 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 
-import UserCreatedClubsCSS from "./UserCreatedClubs.module.css";
+import UserStatisticCSS from "../UserStatistic.module.css";
 
 export default function UserCreatedClubs({ userData }) {
   return (
-    <Card className={UserCreatedClubsCSS.cardHolder}>
-      <Box>
-        <CardContent className={UserCreatedClubsCSS.cardContentLeft}>
+    <Card className={UserStatisticCSS.cardHolder}>
+      <Box className={UserStatisticCSS.content}>
+        <CardContent className={UserStatisticCSS.cardContentLeft}>
           <Typography component="div" variant="h3">
             {userData.userCreatedClubs ? (
               <>{userData.userCreatedClubs.length}</>
@@ -21,9 +21,9 @@ export default function UserCreatedClubs({ userData }) {
         </CardContent>
       </Box>
       <Box>
-        <CardContent className={UserCreatedClubsCSS.cardContentRight}>
+        <CardContent className={UserStatisticCSS.cardContentRight}>
           <div>
-            <FactCheckIcon className={UserCreatedClubsCSS.groupsIcon} />
+            <FactCheckIcon className={UserStatisticCSS.groupsIcon} />
           </div>
         </CardContent>
       </Box>
