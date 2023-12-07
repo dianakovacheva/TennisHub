@@ -123,11 +123,9 @@ export const getClubCourts = async (clubId) => {
 };
 
 // Get court by id
-export const getCourtById = async (clubId, courtId) => {
+export const getCourtById = async (courtId) => {
   try {
-    const courtData = await request.get(
-      `${clubBaseURL}/${clubId}/court/${courtId}`
-    );
+    const courtData = await request.get(`${clubBaseURL}/court/${courtId}`);
 
     return courtData;
   } catch (error) {
