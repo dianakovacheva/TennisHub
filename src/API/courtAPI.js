@@ -1,6 +1,6 @@
 import * as request from "../lib/request";
 
-const courtBaseUrl = "http://localhost:3000/api/club/court";
+const courtBaseUrl = "http://localhost:3000/api/club";
 
 // Create court
 export const createCourt = async ({
@@ -11,7 +11,7 @@ export const createCourt = async ({
   lighting,
 }) => {
   try {
-    const courtData = await request.post(`${courtBaseUrl}/create`, {
+    const courtData = await request.post(`${courtBaseUrl}/court/create`, {
       clubId,
       courtName,
       surface,
@@ -46,7 +46,7 @@ export const editCourt = async (
 ) => {
   try {
     const courtData = await request.put(
-      `${courtBaseUrl}/${courtId}/edit`,
+      `${courtBaseUrl}/court/${courtId}/edit`,
       clubId,
       courtName,
       surface,
@@ -61,9 +61,15 @@ export const editCourt = async (
 };
 
 // Delete court
-export const deleteCourt = async (courtId) => {
+export const deleteCourt = async (courtId, clubId) => {
   try {
-    const court = await request.remove(`${courtBaseUrl}/${courtId}/delete`);
+    const court = await request.remove(
+      `${courtBaseUrl}/${clubId}/court/${courtId}/delete`
+    );
+
+    if (court) {
+      console.log("Court deleted successfully!");
+    }
 
     return court;
   } catch (error) {
