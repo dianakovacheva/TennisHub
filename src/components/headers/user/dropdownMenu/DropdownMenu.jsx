@@ -45,7 +45,7 @@ export default function DropdownMenu() {
             className={DropdownMenuCSS.avatarIconButton}
             onClick={handleOpenUserMenu}
           >
-            <Avatar alt={firstName} src="/static/images/avatar/2.jpg" />
+            <Avatar>{`${firstName[0]}${lastName[0]}`}</Avatar>
           </IconButton>
         </Tooltip>
         <Menu
