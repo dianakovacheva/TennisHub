@@ -19,6 +19,7 @@ import EditClubForm from "./components/edit-club-form/EditClubForm";
 import ClubDetails from "./components/club-details/ClubDetails";
 import CreateCourt from "./components/create-court/CreateCourt";
 import EditCourt from "./components/edit-court/EditCourt";
+import BookCourt from "./components/book-court/BookCourt";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -40,6 +41,7 @@ function App() {
             path="/club/:clubId/court/:courtId/edit-court"
             element={<EditCourt />}
           />
+          <Route path="/book-court" element={<BookCourt />} />
           <Route path="/club/:clubId/book-court" element={<Calendar />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
