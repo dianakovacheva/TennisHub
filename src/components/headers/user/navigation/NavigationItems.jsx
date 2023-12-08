@@ -1,11 +1,6 @@
 import { ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 
-import {
-  DashboardIcon,
-  SportsTennisIcon,
-  AddCircleIcon,
-  EventIcon,
-} from "@mui/icons-material";
+import { Dashboard, SportsTennis, AddCircle, Event } from "@mui/icons-material";
 
 import { Link } from "react-router-dom";
 
@@ -17,7 +12,7 @@ export default function NavigationItems() {
       <Link to={"/"}>
         <ListItemButton>
           <ListItemIcon>
-            <DashboardIcon />
+            <Dashboard />
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItemButton>
@@ -25,7 +20,7 @@ export default function NavigationItems() {
       <Link to={"/clubs"}>
         <ListItemButton>
           <ListItemIcon>
-            <SportsTennisIcon />
+            <SportsTennis />
           </ListItemIcon>
           <ListItemText primary="Clubs" />
         </ListItemButton>
@@ -33,7 +28,7 @@ export default function NavigationItems() {
       <Link to={"/create-club"}>
         <ListItemButton>
           <ListItemIcon>
-            <AddCircleIcon />
+            <AddCircle />
           </ListItemIcon>
           <ListItemText primary="Create Club" />
         </ListItemButton>
@@ -41,7 +36,7 @@ export default function NavigationItems() {
       <Link to={"/book-court"}>
         <ListItemButton>
           <ListItemIcon>
-            <EventIcon />
+            <Event />
           </ListItemIcon>
           <ListItemText primary="Book Court" />
         </ListItemButton>
