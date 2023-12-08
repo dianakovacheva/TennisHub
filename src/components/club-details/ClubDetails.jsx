@@ -54,7 +54,7 @@ export default function ClubDetails() {
     setRefreshData((curr) => !curr);
   };
 
-  // Start Comments Handlers
+  // Add Comment
   const addComment = async (newComment) => {
     try {
       const response = await commentAPI.addComment(newComment, clubId);
@@ -70,6 +70,7 @@ export default function ClubDetails() {
     }
   };
 
+  // Delete Comment
   const deleteCommentHandler = async (commentId) => {
     try {
       const response = await commentAPI.deleteComment(commentId, clubId);
@@ -85,7 +86,6 @@ export default function ClubDetails() {
       console.log(error);
     }
   };
-  // End Comments Handler
 
   const isClubOwner = userId === club.manager?.find(() => true)._id;
   const hasJoinedClub = club.members?.includes(userId);
@@ -97,6 +97,7 @@ export default function ClubDetails() {
         hasJoinedClub={hasJoinedClub}
         requestRefreshHandler={requestRefreshHandler}
         club={club}
+        courts={courts}
       />
 
       <CourtsList
