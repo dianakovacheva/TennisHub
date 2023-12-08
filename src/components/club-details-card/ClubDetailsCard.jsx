@@ -26,6 +26,8 @@ import * as clubAPI from "../../API/clubAPI";
 import ClubDetailsCardCSS from "./ClubDetailsCard.module.css";
 import AuthContext from "../../contexts/AuthContext";
 
+import { useSnackbar } from "../../contexts/SnackbarContext";
+
 export default function ClubDetailsCard({
   isClubOwner,
   hasJoinedClub,
@@ -34,8 +36,9 @@ export default function ClubDetailsCard({
 }) {
   const navigate = useNavigate();
   const { userId } = useContext(AuthContext);
-
   const { clubId } = useParams();
+
+  const { openSnackbar } = useSnackbar();
 
   if (!club) {
     return <div>Loading...</div>;
@@ -48,27 +51,50 @@ export default function ClubDetailsCard({
 
   // Delete Club
   const deleteClubHandler = async () => {
-    await clubAPI.deleteClub(clubId);
-    console.log("Club deleted successfully!");
-    navigate("/clubs");
+    try {
+      const response = await clubAPI.deleteClub(clubId);
+
+      if (response) {
+        openSnackbar("Club deleted!", "success");
+      }
+
+      navigate("/clubs");
+    } catch (error) {
+      openSnackbar(error.message, "error");
+    }
   };
 
   // Join Club
   const joinClubHandler = async () => {
-    const res = await clubAPI.joinClub(clubId);
+    try {
+      const response = await clubAPI.joinClub(clubId);
 
-    console.log("Club joined!");
+      if (response.joinedClub.ok) {
+        openSnackbar("Club joined!", "success");
 
-    if (res.joinedClub.ok) requestRefreshHandler();
-    navigate(`/club/${clubId}`);
+        requestRefreshHandler();
+
+        navigate(`/club/${clubId}`);
+      }
+    } catch (error) {
+      openSnackbar(error.message, "error");
+    }
   };
 
   // Leave Club
   const leaveClub = async () => {
-    const res = await clubAPI.leaveClub(clubId);
-    if (res) requestRefreshHandler();
-    console.log("Club left successfully!");
-    navigate(`/club/${clubId}`);
+    try {
+      const response = await clubAPI.leaveClub(clubId);
+      if (response) {
+        openSnackbar("Club left!", "success");
+
+        requestRefreshHandler();
+
+        navigate(`/club/${clubId}`);
+      }
+    } catch (error) {
+      openSnackbar(error.message, "error");
+    }
   };
 
   // Add Court
