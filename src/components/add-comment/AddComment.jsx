@@ -8,14 +8,10 @@ import {
 } from "@mui/material";
 
 import { useState } from "react";
-// import { useNavigate, useParams } from "react-router-dom";
 
-// import * as commentAPI from "../../API/commentAPI";
 import AddCommentCSS from "./AddComment.module.css";
 
 export default function AddComment({ addComment }) {
-  // const navigate = useNavigate();
-  // const { clubId } = useParams();
   const [newComment, setNewComment] = useState("");
 
   const handleCommentSubmit = async (e) => {
@@ -28,24 +24,6 @@ export default function AddComment({ addComment }) {
     e.target.reset();
     setNewComment("");
   };
-
-  // const addCommentHandler = async (e) => {
-  //   e.preventDefault();
-
-  //   const commentData = Object.fromEntries(new FormData(e.currentTarget));
-
-  //   try {
-  //     const response = await commentAPI.addComment(commentData, clubId);
-
-  //     if (response) {
-  //       console.log("Comment added successfully!");
-
-  //       navigate(`/club/${clubId}`);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <Card
