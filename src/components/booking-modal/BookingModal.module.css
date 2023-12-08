@@ -1,0 +1,25 @@
+.bookCourtForm {
+  position: absolute;
+  top: 30% !important;
+  left: 30% !important;
+  max-width: 50%;
+  transform: translateZ(-50%, -50%);
+  background-color: #ffffff;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2em !important;
+}
+
+.courtName {
+  font-size: 1em !important;
+  font-weight: 800 !important;
+  text-align: center;
+}
+
+.timeInputFields {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+}

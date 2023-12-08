@@ -1,97 +1,143 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import Backdrop from "@mui/material/Backdrop";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { useSpring, animated } from "@react-spring/web";
+import {
+  Modal,
+  Button,
+  TextField,
+  Chip,
+  Autocomplete,
+  Typography,
+} from "@mui/material";
 
-const Fade = React.forwardRef(function Fade(props, ref) {
-  const {
-    children,
-    in: open,
-    onClick,
-    onEnter,
-    onExited,
-    ownerState,
-    ...other
-  } = props;
-  const style = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: open ? 1 : 0 },
-    onStart: () => {
-      if (open && onEnter) {
-        onEnter(null, true);
-      }
-    },
-    onRest: () => {
-      if (!open && onExited) {
-        onExited(null, true);
-      }
-    },
+import moment from "moment";
+
+import { useState, useEffect } from "react";
+
+import BookingModalCSS from "./BookingModal.module.css";
+
+const formatDateTime = (datetime) => {
+  return moment(datetime).format().split("+")[0];
+};
+
+export default function BookingModal({
+  isOpen,
+  onClose,
+  bookCourt,
+  selectedCourt,
+  selectedEvent,
+  players,
+  currUser,
+  requestRefreshHandler,
+}) {
+  const selectedCourtId = selectedCourt?._id;
+  const [startTime, setStartTime] = useState(null);
+  const [endTime, setEndTime] = useState(null);
+  const fixedOptions = [currUser];
+  const [value, setValue] = useState([...fixedOptions]);
+  const [booking, setBooking] = useState({
+    courtId: "",
+    bookedBy: "",
+    startTime: "",
+    endTime: "",
+    players: [],
   });
 
+  useEffect(() => {
+    setStartTime(formatDateTime(selectedEvent?.start));
+    setEndTime(formatDateTime(selectedEvent?.end));
+  }, [selectedEvent]);
+
+  useEffect(() => {
+    setBooking({
+      ...booking,
+      courtId: selectedCourt?._id,
+      bookedBy: currUser._id,
+      players: value,
+      startTime: startTime,
+      endTime: endTime,
+    });
+  }, [value, startTime, endTime]);
+
+  const onCloseHandler = (e) => {
+    setBooking({});
+    setValue([...fixedOptions]);
+    // Close the modal
+    onClose();
+  };
+
+  // Book Court
+  const bookCourtHandler = async (e) => {
+    e.preventDefault();
+
+    await bookCourt(booking);
+    requestRefreshHandler();
+
+    e.target.reset();
+
+    setBooking({});
+    // Close the modal
+    onClose();
+  };
+
   return (
-    <animated.div ref={ref} style={style} {...other}>
-      {React.cloneElement(children, { onClick })}
-    </animated.div>
-  );
-});
-
-Fade.propTypes = {
-  children: PropTypes.element.isRequired,
-  in: PropTypes.bool,
-  onClick: PropTypes.any,
-  onEnter: PropTypes.func,
-  onExited: PropTypes.func,
-  ownerState: PropTypes.any,
-};
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
-export default function BookingModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  return (
-    <div>
-      <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
-        aria-labelledby="spring-modal-title"
-        aria-describedby="spring-modal-description"
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        slots={{ backdrop: Backdrop }}
-        slotProps={{
-          backdrop: {
-            TransitionComponent: Fade,
-          },
-        }}
-      >
-        <Fade in={open}>
-          <Box sx={style}>
-            <Typography id="spring-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography>
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-          </Box>
-        </Fade>
-      </Modal>
-    </div>
+    <Modal
+      component="form"
+      open={isOpen}
+      onClose={onCloseHandler}
+      className={BookingModalCSS.modalContainer}
+      onSubmit={bookCourtHandler}
+    >
+      <div className={BookingModalCSS.bookCourtForm}>
+        <Typography className={BookingModalCSS.courtName}>
+          Selected Court: {selectedCourt?.courtName}
+        </Typography>
+        <div className={BookingModalCSS.timeInputFields}>
+          <TextField
+            label="Start Time"
+            type="datetime-local"
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
+            InputLabelProps={{ shrink: true }}
+          />
+          <TextField
+            label="End Time"
+            type="datetime-local"
+            value={endTime}
+            onChange={(e) => setEndTime(e.target.value)}
+            InputLabelProps={{ shrink: true }}
+          />
+        </div>
+        <Autocomplete
+          multiple
+          id="fixed-tags-demo"
+          value={value}
+          onChange={(event, newValue) => {
+            console.log(fixedOptions);
+            console.log(newValue);
+            setValue([
+              ...fixedOptions,
+              ...newValue.filter(
+                (option) => fixedOptions.indexOf(option) === -1
+              ),
+            ]);
+          }}
+          options={players}
+          getOptionLabel={(option) => option?.fullName}
+          renderTags={(tagValue, getTagProps) =>
+            tagValue.map((option, index) => (
+              <Chip
+                label={option?.fullName}
+                {...getTagProps({ index })}
+                disabled={fixedOptions?.indexOf(option) !== -1}
+              />
+            ))
+          }
+          renderInput={(params) => (
+            <TextField {...params} label="Players" placeholder="Club members" />
+          )}
+        />
+        <Button variant="contained" color="primary" type="submit">
+          Book Court
+        </Button>
+      </div>
+    </Modal>
   );
 }

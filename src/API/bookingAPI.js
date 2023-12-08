@@ -3,10 +3,17 @@ import * as request from "../lib/request";
 const bookingBaseUrl = "http://localhost:3000/api/booking";
 
 // Book court //
-export const bookCourt = async (courtId, startTime, endTime, players) => {
+export const bookCourt = async ({
+  courtId,
+  bookedBy,
+  startTime,
+  endTime,
+  players,
+}) => {
   try {
     const bookingData = await request.post(`${bookingBaseUrl}/book-court`, {
       courtId,
+      bookedBy,
       startTime,
       endTime,
       players,
