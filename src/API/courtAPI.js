@@ -25,17 +25,6 @@ export const createCourt = async ({
   }
 };
 
-// Get court by id
-// export const getCourtById = async (courtId) => {
-//   try {
-//     const courtData = await request.get(`${courtBaseUrl}/${courtId}`);
-
-//     return courtData;
-//   } catch (error) {
-//     throw new Error(error.message);
-//   }
-// };
-
 // Edit court
 export const editCourt = async (court) => {
   const { courtId, clubId, courtName, surface, indoor, lighting } = court;
