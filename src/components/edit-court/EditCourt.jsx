@@ -11,12 +11,14 @@ import {
   FormControlLabel,
 } from "@mui/material";
 
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useSnackbar } from "../../contexts/SnackbarContext";
 
 import * as courtAPI from "../../API/courtAPI";
 import * as clubAPI from "../../API/clubAPI";
+
 import EditCourtCSS from "./EditCourt.module.css";
-import { useEffect, useState } from "react";
 
 const surfaceType = [
   { value: "Clay", label: "Clay" },
@@ -40,6 +42,7 @@ const surfaceType = [
 
 export default function EditCourt() {
   const navigate = useNavigate();
+  const { openSnackbar } = useSnackbar();
   const { clubId, courtId } = useParams();
 
   const [court, setCourt] = useState({
@@ -66,12 +69,12 @@ export default function EditCourt() {
       const response = await courtAPI.editCourt(court);
 
       if (response) {
-        console.log("Court edited successfully!");
+        openSnackbar("Court edited!", "success");
 
         navigate(`/club/${clubId}`);
       }
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      openSnackbar(error.message, "error");
     }
   };
 

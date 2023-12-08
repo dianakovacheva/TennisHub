@@ -1,18 +1,14 @@
-import React from "react";
+import { Grid, Typography, TextField, Button, Card } from "@mui/material";
 
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
+import * as clubAPI from "../../API/clubAPI";
+import CreateClubFormCSS from "./CreateClubForm.module.css";
 
 import { useNavigate } from "react-router-dom";
-import * as clubAPI from "../../API/clubAPI";
-
-import CreateClubFormCSS from "./CreateClubForm.module.css";
+import { useSnackbar } from "../../contexts/SnackbarContext";
 
 export default function CreateClubForm() {
   const navigate = useNavigate();
+  const { openSnackbar } = useSnackbar();
 
   const createClubSubmitHandler = async (e) => {
     e.preventDefault();
@@ -24,10 +20,11 @@ export default function CreateClubForm() {
       const createdClubId = response._id;
 
       if (createdClubId) {
+        openSnackbar("Club created!", "success");
         navigate(`/club/${createdClubId}`);
       }
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      openSnackbar(error.message, "error");
     }
   };
 

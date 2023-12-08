@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
+import { Grid, Typography, TextField, Button, Card } from "@mui/material";
 
+import { useSnackbar } from "../../contexts/SnackbarContext";
 import * as clubAPI from "../../API/clubAPI";
 
 import EditClubFormCSS from "./EditClubForm.module.css";
 
 export default function EditClubForm() {
   const navigate = useNavigate();
+  const { openSnackbar } = useSnackbar();
   const { clubId } = useParams();
   const [club, setClub] = useState({
     name: "",
@@ -34,11 +32,14 @@ export default function EditClubForm() {
     const clubData = Object.fromEntries(new FormData(e.currentTarget));
 
     try {
-      await clubAPI.editClub(clubData, clubId);
+      const response = await clubAPI.editClub(clubData, clubId);
 
-      navigate(`/club/${clubId}`);
-    } catch (err) {
-      console.log(err);
+      if (response) {
+        openSnackbar("Club edited!", "success");
+        navigate(`/club/${clubId}`);
+      }
+    } catch (error) {
+      openSnackbar(error.message, "error");
     }
   };
 

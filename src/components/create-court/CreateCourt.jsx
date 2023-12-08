@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 
 import { useNavigate, useParams } from "react-router-dom";
+import { useSnackbar } from "../../contexts/SnackbarContext";
 
 import * as courtAPI from "../../API/courtAPI";
 import CreateCourtCSS from "./CreateCourt.module.css";
@@ -38,6 +39,7 @@ const surfaceType = [
 
 export default function CreateCourt() {
   const navigate = useNavigate();
+  const { openSnackbar } = useSnackbar();
   const { clubId } = useParams();
 
   const createCourtSubmutHandlers = async (e) => {
@@ -51,12 +53,12 @@ export default function CreateCourt() {
       const response = await courtAPI.createCourt(court);
 
       if (response) {
-        console.log("Court created successfully!");
+        openSnackbar("Court created!", "success");
 
         navigate(`/club/${clubId}`);
       }
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      openSnackbar(error.message, "error");
     }
   };
 

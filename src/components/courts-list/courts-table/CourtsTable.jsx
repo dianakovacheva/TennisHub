@@ -18,6 +18,7 @@ import {
 
 import * as courtAPI from "../../../API/courtAPI";
 import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "../../../contexts/SnackbarContext";
 
 import CourtsTableCSS from "./CourtsTable.module.css";
 
@@ -27,6 +28,7 @@ export default function CourtsTable({
   requestRefreshHandler,
 }) {
   const navigate = useNavigate();
+  const { openSnackbar } = useSnackbar();
 
   // Edit Court
   const editCourtHandler = async (courtId, clubId) => {
@@ -39,10 +41,12 @@ export default function CourtsTable({
       const response = await courtAPI.deleteCourt(courtId, clubId);
 
       if (response._id) {
+        openSnackbar("Court deleted!", "success");
+
         requestRefreshHandler();
       }
     } catch (error) {
-      console.log(error);
+      openSnackbar(error.message, "error");
     }
   };
 
