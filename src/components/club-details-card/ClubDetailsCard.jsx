@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import {
@@ -31,7 +31,6 @@ export default function ClubDetailsCard({
   hasJoinedClub,
   requestRefreshHandler,
   club,
-  courts,
 }) {
   const navigate = useNavigate();
   const { userId } = useContext(AuthContext);
