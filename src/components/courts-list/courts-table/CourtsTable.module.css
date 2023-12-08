@@ -1,0 +1,8 @@
+.tableContainer {
+  min-width: 650px;
+}
+
+.tableRow:last-child td,
+.tableRow:last-child th {
+  border: 0;
+}

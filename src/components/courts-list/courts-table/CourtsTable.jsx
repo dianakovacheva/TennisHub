@@ -17,7 +17,9 @@ import {
 } from "@mui/icons-material";
 
 import * as courtAPI from "../../../API/courtAPI";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import CourtsTableCSS from "./CourtsTable.module.css";
 
 export default function CourtsTable({
   isClubOwner,
@@ -26,20 +28,12 @@ export default function CourtsTable({
 }) {
   const navigate = useNavigate();
 
+  // Edit Court
   const editCourtHandler = async (courtId, clubId) => {
-    // try {
-    //   const respone = await courtAPI.editCourt(courtId, clubId);
-
-    //   if (respone._id) {
-    //     navigate(`/club/${clubId}/court/${courtId}/edit-court`);
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
-
     navigate(`/club/${clubId}/court/${courtId}/edit-court`);
   };
 
+  // Delete Court
   const deleteCourtHandler = async (courtId, clubId) => {
     try {
       const response = await courtAPI.deleteCourt(courtId, clubId);
@@ -56,7 +50,10 @@ export default function CourtsTable({
     <>
       {courts.length > 0 && (
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table
+            className={CourtsTableCSS.tableContainer}
+            aria-label="simple table"
+          >
             <TableHead>
               <TableRow>
                 <TableCell align="center">Court Name</TableCell>
@@ -70,7 +67,7 @@ export default function CourtsTable({
               {courts.map((courtObject) => (
                 <TableRow
                   key={courtObject._id}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  className={CourtsTableCSS.tableRow}
                 >
                   <TableCell component="th" scope="row" align="center">
                     {courtObject.courtName}
