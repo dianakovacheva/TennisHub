@@ -1,16 +1,20 @@
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import ListSubheader from "@mui/material/ListSubheader";
-import SportsTennisIcon from "@mui/icons-material/SportsTennis";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import EventIcon from "@mui/icons-material/Event";
+import {
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  ListSubheader,
+} from "@mui/material";
+
+import {
+  DashboardIcon,
+  SportsTennisIcon,
+  AddCircleIcon,
+  EventIcon,
+} from "@mui/icons-material";
 
 import { Link } from "react-router-dom";
 
 import "./NavigationItems.css";
-import { Person } from "@mui/icons-material";
 
 export default function NavigationItems() {
   return (
@@ -39,12 +43,12 @@ export default function NavigationItems() {
           <ListItemText primary="Create Club" />
         </ListItemButton>
       </Link>
-      <Link to={"/account"}>
+      <Link to={"/book-court"}>
         <ListItemButton>
           <ListItemIcon>
-            <Person />
+            <EventIcon />
           </ListItemIcon>
-          <ListItemText primary="Account" />
+          <ListItemText primary="Book Court" />
         </ListItemButton>
       </Link>
     </>
