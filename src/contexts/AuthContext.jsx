@@ -1,45 +1,63 @@
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 import * as authAPI from "../API/authAPI";
 
+import { useSnackbar } from "./SnackbarContext";
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const { openSnackbar } = useSnackbar();
+
   const navigate = useNavigate();
 
   const [auth, setAuth] = useLocalStorage("user", {});
 
   // Login
   const loginSubmitHandler = async (values) => {
-    const result = await authAPI.login(values.email, values.password);
+    try {
+      const result = await authAPI.login(values.email, values.password);
+      setAuth(result);
 
-    setAuth(result);
-
-    navigate("/");
+      openSnackbar(`Hello, ${result.firstName}!`, "success");
+      navigate("/");
+    } catch (error) {
+      openSnackbar(error.message, "error");
+    }
   };
 
   // Register
   const registerSubmitHandler = async (values) => {
-    const result = await authAPI.register(
-      values.firstName,
-      values.lastName,
-      values.email,
-      values.password
-    );
+    try {
+      const result = await authAPI.register(
+        values.firstName,
+        values.lastName,
+        values.email,
+        values.password
+      );
 
-    setAuth(result);
-
-    navigate("/");
+      setAuth(result);
+      openSnackbar(`Hello, ${result.firstName}!`, "success");
+      navigate("/");
+    } catch (error) {
+      openSnackbar(error.message, "error");
+    }
   };
 
   // Logout
-  const logoutHandler = () => {
-    setAuth({});
+  const logoutHandler = async () => {
+    try {
+      const result = await authAPI.logout();
+      setAuth(result);
 
-    localStorage.removeItem("user");
+      localStorage.removeItem("user");
 
-    navigate("/");
+      openSnackbar("Bye bye...", "info");
+      navigate("/");
+    } catch (error) {
+      openSnackbar(error.message, "error");
+    }
   };
 
   const values = {
