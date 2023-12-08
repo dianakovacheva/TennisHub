@@ -1,0 +1,19 @@
+.formContainer {
+  max-width: 70% !important;
+  margin: 64px auto;
+  padding: 3em;
+}
+
+.formTitle {
+  text-align: center;
+}
+
+.submitBtn {
+  margin: 1.5em 0 !important;
+}
+
+@media screen and (max-width: 600px) {
+  .formContainer {
+    max-width: 90% !important;
+  }
+}
