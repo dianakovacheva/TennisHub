@@ -97,7 +97,6 @@ export default function ClubDetails() {
         hasJoinedClub={hasJoinedClub}
         requestRefreshHandler={requestRefreshHandler}
         club={club}
-        courts={courts}
       />
 
       <CourtsList
