@@ -6,44 +6,45 @@ import "moment/locale/de";
 import "./Calendar.css";
 import { getAllBookings } from "../../API/bookingAPI";
 import { getClubCourts } from "../../API/clubAPI";
+import { useParams } from "react-router-dom";
 
 const localizer = momentLocalizer(moment);
 
 export default function Calendar() {
   const [bookings, setBookings] = useState([]);
   const [courts, setCourts] = useState([]);
+  const { clubId } = useParams();
 
   useEffect(() => {
-    getAllBookings()
-      .then((result) =>
-        setBookings(
-          result.map((booking) => ({
-            title: booking.players
-              .reduce(
-                (acc, curr) => acc + `${curr.firstName} ${curr.lastName}\n`,
-                ""
-              )
-              .trim(),
-            start: moment(booking.startTime).toDate(),
-            end: moment(booking.endTime).toDate(),
-            resourceId: booking.courtId,
-          }))
+    Promise.all([
+      getAllBookings()
+        .then((result) =>
+          setBookings(
+            result.map((booking) => ({
+              title: booking.players
+                .reduce(
+                  (acc, curr) => acc + `${curr.firstName} ${curr.lastName}\n`,
+                  ""
+                )
+                .trim(),
+              start: moment(booking.startTime).toDate(),
+              end: moment(booking.endTime).toDate(),
+              resourceId: booking.courtId,
+            }))
+          )
         )
-      )
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  useEffect(() => {
-    getClubCourts()
-      .then((result) =>
-        setCourts(result.sort((a, b) => a.courtName - b.courtName))
-      )
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+        .catch((error) => {
+          console.log(error);
+        }),
+      getClubCourts(clubId)
+        .then((result) =>
+          setCourts(result.sort((a, b) => a.courtName - b.courtName))
+        )
+        .catch((error) => {
+          console.log(error);
+        }),
+    ]);
+  }, [clubId]);
 
   let numCourts = courts.length;
 

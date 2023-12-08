@@ -40,7 +40,7 @@ function App() {
             path="/club/:clubId/court/:courtId/edit-court"
             element={<EditCourt />}
           />
-          <Route path="/book-court" element={<Calendar />} />
+          <Route path="/club/:clubId/book-court" element={<Calendar />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>

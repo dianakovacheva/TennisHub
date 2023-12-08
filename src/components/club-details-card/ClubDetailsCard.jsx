@@ -79,7 +79,7 @@ export default function ClubDetailsCard({
 
   // Book Court
   const bookCourtHandler = () => {
-    navigate("/book-court");
+    navigate(`/club/${clubId}/book-court`);
   };
 
   return (
