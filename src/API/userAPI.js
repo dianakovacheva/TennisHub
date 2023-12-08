@@ -12,3 +12,16 @@ export const getUserById = async (userId) => {
     throw new Error(error.message);
   }
 };
+
+// User Joined Clubs
+export const getUserJoinedClubs = async (userId) => {
+  try {
+    const userJoinedClubs = await request.get(
+      `${userBaseUrl}/${userId}/joined-clubs`
+    );
+
+    return userJoinedClubs;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
