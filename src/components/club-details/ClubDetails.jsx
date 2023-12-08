@@ -15,7 +15,11 @@ import * as clubAPI from "../../API/clubAPI";
 import * as commentAPI from "../../API/commentAPI";
 import AuthContext from "../../contexts/AuthContext";
 
+import { useSnackbar } from "../../contexts/SnackbarContext";
+
 export default function ClubDetails() {
+  const { openSnackbar } = useSnackbar();
+
   const [club, setClub] = useState({});
   const [courts, setCourts] = useState([]);
   const [comments, setComments] = useState([]);
@@ -60,13 +64,13 @@ export default function ClubDetails() {
       const response = await commentAPI.addComment(newComment, clubId);
 
       if (response) {
-        console.log("Comment added successfully!");
+        openSnackbar("Comment added!", "success");
 
         setToggleRefresh((curr) => !curr);
         navigate(`/club/${clubId}`);
       }
     } catch (error) {
-      console.log(error);
+      openSnackbar(error.message, "error");
     }
   };
 
@@ -76,14 +80,13 @@ export default function ClubDetails() {
       const response = await commentAPI.deleteComment(commentId, clubId);
 
       if (response) {
-        console.log("Comment deleted successfully!");
-
+        openSnackbar("Comment deleted!", "success");
         setDeleteComment((curr) => !curr);
 
         navigate(`/club/${clubId}`);
       }
     } catch (error) {
-      console.log(error);
+      openSnackbar(error.message, "error");
     }
   };
 
