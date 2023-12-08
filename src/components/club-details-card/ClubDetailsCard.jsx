@@ -31,6 +31,7 @@ export default function ClubDetailsCard({
   hasJoinedClub,
   requestRefreshHandler,
   club,
+  courts,
 }) {
   const navigate = useNavigate();
   const { userId } = useContext(AuthContext);
@@ -41,20 +42,19 @@ export default function ClubDetailsCard({
     return <div>Loading...</div>;
   }
 
+  // Edit Club
   const editClubHandler = () => {
     navigate(`/club/${clubId}/edit`);
   };
 
-  const addCourtHandler = () => {
-    navigate(`/club/${clubId}/add-court`);
-  };
-
+  // Delete Club
   const deleteClubHandler = async () => {
     await clubAPI.deleteClub(clubId);
     console.log("Club deleted successfully!");
     navigate("/clubs");
   };
 
+  // Join Club
   const joinClubHandler = async () => {
     const res = await clubAPI.joinClub(clubId);
 
@@ -64,11 +64,22 @@ export default function ClubDetailsCard({
     navigate(`/club/${clubId}`);
   };
 
+  // Leave Club
   const leaveClub = async () => {
     const res = await clubAPI.leaveClub(clubId);
     if (res) requestRefreshHandler();
     console.log("Club left successfully!");
     navigate(`/club/${clubId}`);
+  };
+
+  // Add Court
+  const addCourtHandler = () => {
+    navigate(`/club/${clubId}/add-court`);
+  };
+
+  // Book Court
+  const bookCourtHandler = () => {
+    navigate("/book-court");
   };
 
   return (
@@ -147,7 +158,12 @@ export default function ClubDetailsCard({
           )}
           {hasJoinedClub && club.courts.length > 0 && (
             <>
-              <Button size="small" variant="outlined" startIcon={<Event />}>
+              <Button
+                size="small"
+                variant="outlined"
+                startIcon={<Event />}
+                onClick={bookCourtHandler}
+              >
                 Book Court
               </Button>
             </>
