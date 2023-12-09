@@ -10,7 +10,8 @@
 
 /* Club Image */
 .clubImage {
-  width: 40%;
+  width: 40% !important;
+
   height: auto;
   object-fit: cover;
 }
@@ -19,7 +20,7 @@
 .cardContent {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 60%;
 }
 
 /* Action Btn */
