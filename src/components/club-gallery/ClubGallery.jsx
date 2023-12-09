@@ -14,6 +14,7 @@ export default function ClubGallery() {
   return (
     <>
       {/* Start Hero Section */}
+
       {!isAuthenticated && (
         <Box className={ClubGalleryCSS.heroSection}>
           <Container maxWidth="sm">

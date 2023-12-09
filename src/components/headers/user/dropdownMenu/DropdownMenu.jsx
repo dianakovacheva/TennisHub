@@ -15,10 +15,10 @@ import AuthContext from "../../../../contexts/AuthContext";
 import DropdownMenuCSS from "./DropdownMenu.module.css";
 
 const dropdownMenu = [
-  {
-    label: "Account",
-    url: "/account",
-  },
+  // {
+  //   label: "Account",
+  //   url: "/account",
+  // },
   {
     label: "Logout",
     url: "/logout",

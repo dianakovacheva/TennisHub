@@ -24,10 +24,10 @@ const pages = [
     label: "Clubs",
     url: "/clubs",
   },
-  {
-    label: "Tennis News",
-    url: "/news",
-  },
+  // {
+  //   label: "Tennis News",
+  //   url: "/news",
+  // },
   {
     label: "Login",
     url: "/login",
@@ -129,7 +129,7 @@ export default function GuestHeader({ children }) {
             {/* End GuestHeader Links */}
 
             {/* Start Search */}
-            <Search className={GuestHeaderCSS.search} />
+            {/* <Search className={GuestHeaderCSS.search} /> */}
             {/* End Search */}
           </Toolbar>
         </Container>
