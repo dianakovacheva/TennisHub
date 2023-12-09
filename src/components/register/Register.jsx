@@ -10,6 +10,7 @@ import {
   IconButton,
   Typography,
   Grid,
+  FormControl,
 } from "@mui/material";
 
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -30,6 +31,8 @@ const RegisterFormKeys = {
   Password: "password",
   RepeatPassword: "repeatPassword",
 };
+
+const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]+$/i;
 
 export default function Register() {
   const { registerSubmitHandler } = useContext(AuthContext);
@@ -70,7 +73,9 @@ export default function Register() {
           <Typography component="h1" variant="h5">
             Register
           </Typography>
-          <Box
+
+          {/* Start register form */}
+          <FormControl
             onSubmit={onSubmit}
             className={RegisterFormCSS.registerFormContainer}
             component="form"
@@ -87,6 +92,13 @@ export default function Register() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  helperText={
+                    values[RegisterFormKeys.FirstName].length === 0
+                      ? "You must enter a value."
+                      : "" || values[RegisterFormKeys.FirstName].length < 2
+                      ? "The first name must be at least 2 characters long."
+                      : ""
+                  }
                   type="text"
                 />
               </Grid>
@@ -99,6 +111,13 @@ export default function Register() {
                   name={RegisterFormKeys.LastName}
                   onChange={onChange}
                   value={values[RegisterFormKeys.LastName]}
+                  helperText={
+                    values[RegisterFormKeys.LastName].length === 0
+                      ? "You must enter a value."
+                      : "" || values[RegisterFormKeys.LastName].length < 2
+                      ? "The last name must be at least 2 characters long."
+                      : ""
+                  }
                   autoComplete="family-name"
                   type="text"
                 />
@@ -113,8 +132,16 @@ export default function Register() {
                   onChange={onChange}
                   value={values[RegisterFormKeys.Email]}
                   autoComplete="email"
-                  type="text"
-                  placeholder="john-doe@email.com"
+                  type="email"
+                  placeholder="john.doe@email.com"
+                  helperText={
+                    (values[RegisterFormKeys.Email].length === 0
+                      ? "You must enter a value."
+                      : "") ||
+                    (!values[RegisterFormKeys.Email].match(emailRegExp)
+                      ? "Not a valid email."
+                      : "")
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -127,6 +154,14 @@ export default function Register() {
                   label="Password"
                   id="password"
                   autoComplete="new-password"
+                  helperText={
+                    (values[RegisterFormKeys.Password].length === 0
+                      ? "You must enter a value."
+                      : "") ||
+                    (values[RegisterFormKeys.Password].length < 8
+                      ? "Password must be at least 8 characters."
+                      : "")
+                  }
                   type={showPassword1 ? "text" : "password"}
                   InputProps={{
                     endAdornment: (
@@ -154,6 +189,14 @@ export default function Register() {
                   id="repeatPassword"
                   autoComplete="new-password"
                   type={showPassword2 ? "text" : "password"}
+                  helperText={
+                    (values[RegisterFormKeys.RepeatPassword].length === 0
+                      ? "You must enter a value."
+                      : "") ||
+                    (values[RegisterFormKeys.RepeatPassword].length < 8
+                      ? "Repeat password must be at least 8 characters."
+                      : "")
+                  }
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -189,7 +232,8 @@ export default function Register() {
                 </Link>
               </Grid>
             </Grid>
-          </Box>
+          </FormControl>
+          {/* End register form */}
         </Box>
       </Grid>
     </Grid>

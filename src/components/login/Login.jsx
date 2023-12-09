@@ -116,12 +116,9 @@ export default function Login() {
               name={LoginFormKeys.Password}
               value={values[LoginFormKeys.Password]}
               helperText={
-                (values[LoginFormKeys.Password].length === 0
+                values[LoginFormKeys.Password].length === 0
                   ? "You must enter a value."
-                  : "") ||
-                (values[LoginFormKeys.Password].length < 8
-                  ? "Password must be at least 8 characters."
-                  : "")
+                  : ""
               }
               type={showPassword ? "text" : "password"}
               onChange={onChange}
