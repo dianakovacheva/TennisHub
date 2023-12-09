@@ -23,6 +23,7 @@ export default function BookingModal({
   onClose,
   bookCourt,
   editBooking,
+  deleteBooking,
   selectedCourt,
   selectedEvent,
   players,
@@ -110,10 +111,18 @@ export default function BookingModal({
   };
 
   // Edit Booking
-  const editBookingHandler = async (e) => {
-    e.preventDefault();
-
+  const editBookingHandler = async () => {
     await editBooking(booking);
+    requestRefreshHandler();
+
+    setBooking({});
+    onClose();
+  };
+
+  // Delete Booking
+  const deleteBookingHandler = async () => {
+    await deleteBooking(booking._id);
+
     requestRefreshHandler();
 
     setBooking({});
@@ -187,7 +196,12 @@ export default function BookingModal({
             >
               Save
             </Button>
-            <Button variant="contained" color="error" size="medium">
+            <Button
+              variant="contained"
+              color="error"
+              size="medium"
+              onClick={deleteBookingHandler}
+            >
               Delete
             </Button>
           </Stack>

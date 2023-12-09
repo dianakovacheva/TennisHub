@@ -127,6 +127,19 @@ export default function Calendar() {
     }
   };
 
+  // Delete Booking
+  const deleteBooking = async (bookingId) => {
+    try {
+      const response = await bookingAPI.deleteBooking(bookingId);
+      if (response) {
+        requestRefreshHandler();
+        openSnackbar("Booking deleted!", "success");
+      }
+    } catch (error) {
+      openSnackbar(error.message, "error");
+    }
+  };
+
   return (
     <>
       <div className="calendar-container">
@@ -192,6 +205,7 @@ export default function Calendar() {
                 onClose={() => setIsModalOpen(false)}
                 bookCourt={bookCourt}
                 editBooking={editBooking}
+                deleteBooking={deleteBooking}
                 selectedCourt={selectedCourt}
                 selectedEvent={selectedEvent}
                 players={clubMembers}

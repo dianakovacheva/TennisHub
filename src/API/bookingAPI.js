@@ -70,7 +70,7 @@ export const editBooking = async ({
 // Delete booking //
 export const deleteBooking = async (bookingId) => {
   try {
-    const booking = await request.delete(
+    const booking = await request.remove(
       `${bookingBaseUrl}/${bookingId}/delete`
     );
 
