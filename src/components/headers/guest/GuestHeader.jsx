@@ -103,7 +103,7 @@ export default function GuestHeader({ children }) {
                   ))}
 
                   {/* Start Search */}
-                  <Search />
+                  {/* <Search /> */}
                   {/* End Search */}
                 </Menu>
               </Box>
