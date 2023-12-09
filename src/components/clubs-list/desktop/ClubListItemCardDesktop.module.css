@@ -1,3 +1,6 @@
+.cardContainer {
+  width: 800px !important;
+}
 /* Card Holder */
 .cardBox {
   display: flex;
