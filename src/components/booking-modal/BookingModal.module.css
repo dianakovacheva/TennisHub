@@ -23,3 +23,10 @@
   justify-content: space-between;
   gap: 2em;
 }
+
+.actionBtns {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 2em;
+}

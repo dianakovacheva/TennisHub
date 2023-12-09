@@ -29,7 +29,7 @@ export const bookCourt = async ({
 export const getAllBookings = async () => {
   try {
     const allBookings = await request.get(bookingBaseUrl);
-
+    console.log(allBookings);
     return allBookings;
   } catch (error) {
     throw new Error(error.message);
@@ -48,20 +48,17 @@ export const getBookingById = async (bookingId) => {
 };
 
 // Edit booking //
-export const editBooking = async (
-  bookingId,
+export const editBooking = async ({
+  _id: bookingId,
   courtId,
   startTime,
   endTime,
-  players
-) => {
+  players,
+}) => {
   try {
     const bookingData = await request.put(
       `${bookingBaseUrl}/${bookingId}/edit`,
-      courtId,
-      startTime,
-      endTime,
-      players
+      { courtId, startTime, endTime, players }
     );
 
     return bookingData;
