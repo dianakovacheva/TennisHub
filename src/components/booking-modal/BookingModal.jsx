@@ -113,6 +113,7 @@ export default function BookingModal({
   // Edit Booking
   const editBookingHandler = async () => {
     await editBooking(booking);
+
     requestRefreshHandler();
 
     setBooking({});
@@ -162,8 +163,6 @@ export default function BookingModal({
           id="fixed-tags-demo"
           value={value}
           onChange={(event, newValue) => {
-            console.log(fixedOptions);
-            console.log(newValue);
             setValue([
               ...fixedOptions,
               ...newValue.filter(

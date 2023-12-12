@@ -29,7 +29,7 @@ export const bookCourt = async ({
 export const getAllBookings = async () => {
   try {
     const allBookings = await request.get(bookingBaseUrl);
-    console.log(allBookings);
+
     return allBookings;
   } catch (error) {
     throw new Error(error.message);
