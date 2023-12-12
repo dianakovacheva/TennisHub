@@ -114,14 +114,24 @@ export default function Calendar() {
 
   // Book Court
   const bookCourt = async (bookingData) => {
+    if (
+      moment(bookingData.startTime).isSameOrAfter(moment(bookingData.endTime))
+    ) {
+      openSnackbar("End time must be after start time.", "error");
+
+      throw new Error("End time must be after start time.");
+    }
+
     try {
       const response = await bookingAPI.bookCourt(bookingData);
 
       if (response) {
         openSnackbar("Court booked!", "success");
+        return response;
       }
     } catch (error) {
       openSnackbar(error.message, "error");
+      throw new Error(error);
     }
   };
 

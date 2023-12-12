@@ -100,14 +100,18 @@ export default function BookingModal({
   const bookCourtHandler = async (e) => {
     e.preventDefault();
 
-    await bookCourt(booking);
-    requestRefreshHandler();
+    try {
+      const response = await bookCourt(booking);
+      requestRefreshHandler();
 
-    e.target.reset();
+      e.target.reset();
 
-    setBooking({});
-    // Close the modal
-    onClose();
+      setBooking({});
+      // Close the modal
+      onClose();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Edit Booking
