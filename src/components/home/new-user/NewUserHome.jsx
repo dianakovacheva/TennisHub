@@ -5,10 +5,10 @@ import { AddCircle, PersonAdd } from "@mui/icons-material";
 
 import NewUserHomeCSS from "./NewUserHome.module.css";
 
-export default function NewUserHome({ userJoinedClubs }) {
+export default function NewUserHome({ isNewUser }) {
   return (
     <>
-      {userJoinedClubs.length === 0 && (
+      {isNewUser && (
         <Container component="div" className={NewUserHomeCSS.container}>
           <Stack className={NewUserHomeCSS.actionBtnsStack}>
             <Link to="/create-club">

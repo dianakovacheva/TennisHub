@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import AuthContext from "../../contexts/AuthContext";
 import GuestHome from "./guest/GuestHome";
@@ -7,9 +7,27 @@ import NewUserHome from "./new-user/NewUserHome";
 
 import HomeWrapperCSS from "./HomeWrapper.module.css";
 
+import * as userAPI from "../../API/userAPI";
+
 export default function HomeWrapper() {
-  const { isAuthenticated, userJoinedClubs, userCreatedClubs } =
-    useContext(AuthContext);
+  const { isAuthenticated, userId } = useContext(AuthContext);
+  const [userData, setUserData] = useState({
+    userCreatedClubs: [],
+    userJoinedClubs: [],
+  });
+
+  useEffect(() => {
+    try {
+      userAPI.getUserById(userId).then((result) => {
+        setUserData(result);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [userId]);
+
+  const userJoinedClubs = userData.userJoinedClubs;
+  const userCreatedClubs = userData.userCreatedClubs;
 
   const isNewUser =
     isAuthenticated &&
@@ -18,7 +36,7 @@ export default function HomeWrapper() {
 
   return (
     <div className={HomeWrapperCSS.homeWrapperContainer}>
-      {isNewUser && <NewUserHome userJoinedClubs={userJoinedClubs} />}
+      {isNewUser && <NewUserHome isNewUser={isNewUser} />}
       {isAuthenticated && <UserHome />}
       {!isAuthenticated && <GuestHome />}
     </div>
