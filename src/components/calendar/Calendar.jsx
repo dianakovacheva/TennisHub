@@ -18,7 +18,6 @@ import * as bookingAPI from "../../API/bookingAPI";
 const localizer = momentLocalizer(moment);
 
 export default function Calendar() {
-  const [clubData, setClubData] = useState({});
   const [bookings, setBookings] = useState([]);
   const [courts, setCourts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,6 +49,7 @@ export default function Calendar() {
             start: moment(booking.startTime).toDate(),
             end: moment(booking.endTime).toDate(),
             resourceId: booking.courtId,
+            bookedBy: booking.bookedBy,
             players: booking.players,
             court: courts.find((court) => court._id == booking.courtId),
           }))
@@ -62,12 +62,6 @@ export default function Calendar() {
 
   useEffect(() => {
     Promise.all([
-      clubAPI
-        .getClubById(clubId)
-        .then((result) => setClubData(result))
-        .catch((error) => {
-          console.log(error);
-        }),
       clubAPI
         .getClubCourts(clubId)
         .then((result) =>
@@ -90,12 +84,6 @@ export default function Calendar() {
 
   let numCourts = courts.length;
 
-  let isClubOwner;
-
-  if (clubData.manager != undefined) {
-    isClubOwner = clubData.manager[0]?._id === userId ? true : false;
-  }
-
   const requestRefreshHandler = () => {
     setToggleRefresh(!toggleRefresh);
   };
@@ -106,7 +94,11 @@ export default function Calendar() {
       (booking) => booking._id == bookingId
     );
 
-    if (isClubOwner) {
+    const bookingOwner = selectedBooking.players.find(
+      (player) => player._id === userId
+    );
+
+    if (bookingOwner) {
       setEditMode(true);
       setSelectedBooking(selectedBooking);
       setIsModalOpen(true);
