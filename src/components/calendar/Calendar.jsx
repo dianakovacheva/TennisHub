@@ -18,6 +18,7 @@ import * as bookingAPI from "../../API/bookingAPI";
 const localizer = momentLocalizer(moment);
 
 export default function Calendar() {
+  const [clubData, setClubData] = useState({});
   const [bookings, setBookings] = useState([]);
   const [courts, setCourts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -62,6 +63,12 @@ export default function Calendar() {
 
   useEffect(() => {
     Promise.all([
+      clubAPI
+        .getClubById(clubId)
+        .then((result) => setClubData(result))
+        .catch((error) => {
+          console.log(error);
+        }),
       clubAPI
         .getClubCourts(clubId)
         .then((result) =>
