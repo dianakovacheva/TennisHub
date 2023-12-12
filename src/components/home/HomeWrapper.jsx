@@ -36,7 +36,7 @@ export default function HomeWrapper() {
 
   return (
     <div className={HomeWrapperCSS.homeWrapperContainer}>
-      {isNewUser && <NewUserHome isNewUser={isNewUser} />}
+      {isNewUser && <NewUserHome />}
       {isAuthenticated && <UserHome />}
       {!isAuthenticated && <GuestHome />}
     </div>
