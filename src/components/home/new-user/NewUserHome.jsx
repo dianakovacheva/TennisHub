@@ -5,7 +5,7 @@ import { AddCircle, PersonAdd } from "@mui/icons-material";
 
 import NewUserHomeCSS from "./NewUserHome.module.css";
 
-export default function NewUserHome(userJoinedClubs) {
+export default function NewUserHome({ userJoinedClubs }) {
   return (
     <>
       {userJoinedClubs.length === 0 && (
