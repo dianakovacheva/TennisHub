@@ -144,8 +144,29 @@ export default function Calendar() {
     }
   };
 
+  // Disable the selection of a slot in the past
+  const handleSelectSlot = (slotInfo) => {
+    const start = slotInfo.start;
+
+    if (start < new Date()) {
+      openSnackbar("Cannot select a slot in the past.", "error");
+
+      return;
+    }
+    const clickedEvent = {
+      ...slotInfo,
+      courtId: slotInfo.resourceId,
+      court: courts.find((court) => court._id == slotInfo.resourceId),
+    };
+    setSelectedEvent(clickedEvent);
+    setSelectedCourt(clickedEvent.court);
+    setEditMode(false);
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="calendar-container">
+      <h1 className="clubName">{clubData.name}</h1>
       {!numCourts && (
         <div>
           <p>No courts yet</p>
@@ -158,17 +179,7 @@ export default function Calendar() {
             localizer={localizer}
             events={bookings}
             selectable
-            onSelectSlot={(slotInfo) => {
-              const clickedEvent = {
-                ...slotInfo,
-                courtId: slotInfo.resourceId,
-                court: courts.find((court) => court._id == slotInfo.resourceId),
-              };
-              setSelectedEvent(clickedEvent);
-              setSelectedCourt(clickedEvent.court);
-              setEditMode(false);
-              setIsModalOpen(true);
-            }}
+            onSelectSlot={handleSelectSlot}
             onSelectEvent={onSelectEvent}
             startAccessor="start"
             endAccessor="end"
