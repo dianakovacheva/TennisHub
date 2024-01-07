@@ -11,20 +11,23 @@ import * as userAPI from "../../API/userAPI";
 
 export default function HomeWrapper() {
   const { isAuthenticated, userId } = useContext(AuthContext);
+
   const [userData, setUserData] = useState({
     userCreatedClubs: [],
     userJoinedClubs: [],
   });
 
-  useEffect(() => {
-    try {
-      userAPI.getUserById(userId).then((result) => {
-        setUserData(result);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }, [userId]);
+  if (userId) {
+    useEffect(() => {
+      try {
+        userAPI.getUserById(userId).then((result) => {
+          setUserData(result);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }, [userId]);
+  }
 
   const userJoinedClubs = userData.userJoinedClubs;
   const userCreatedClubs = userData.userCreatedClubs;

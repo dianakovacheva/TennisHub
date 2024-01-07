@@ -1,3 +1,5 @@
 import * as request from "../lib/request";
 
-const clubBaseURL = "http://localhost:3000/api/club";
+import baseApiUrl from "./baseApiUrl";
+
+const clubBaseURL = `${baseApiUrl}/club/search`;

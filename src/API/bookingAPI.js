@@ -1,6 +1,7 @@
 import * as request from "../lib/request";
+import baseApiUrl from "./baseApiUrl";
 
-const bookingBaseUrl = "http://localhost:3000/api/booking";
+const bookingBaseUrl = `${baseApiUrl}/booking`;
 
 // Book court //
 export const bookCourt = async ({

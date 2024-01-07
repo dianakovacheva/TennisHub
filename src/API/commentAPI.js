@@ -1,7 +1,8 @@
-import { useParams } from "react-router-dom";
 import * as request from "../lib/request";
 
-const commentBaseURL = "http://localhost:3000/api/comments";
+import baseApiUrl from "./baseApiUrl";
+
+const commentBaseURL = `${baseApiUrl}/comments`;
 
 // Add comment
 export const addComment = async (comment, clubId) => {
@@ -20,7 +21,7 @@ export const addComment = async (comment, clubId) => {
 // Get all comments
 export const getAllComments = async () => {
   try {
-    const allComments = await request.get(`${commentBaseURL}`);
+    const allComments = await request.get(`${commentBaseURL}/`);
 
     return allComments;
   } catch (error) {

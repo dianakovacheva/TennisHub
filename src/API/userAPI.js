@@ -1,6 +1,8 @@
 import * as request from "../lib/request";
 
-const userBaseUrl = "http://localhost:3000/api/user";
+import baseApiUrl from "./baseApiUrl";
+
+const userBaseUrl = `${baseApiUrl}/user`;
 
 // Get User by Id
 export const getUserById = async (userId) => {

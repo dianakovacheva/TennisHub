@@ -1,6 +1,8 @@
 import * as request from "../lib/request";
 
-const courtBaseUrl = "http://localhost:3000/api/club";
+import baseApiUrl from "./baseApiUrl";
+
+const courtBaseUrl = `${baseApiUrl}/club`;
 
 // Create court
 export const createCourt = async ({

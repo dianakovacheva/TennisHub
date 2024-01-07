@@ -5,6 +5,8 @@
 TennisHub is a web application built with React (client-side), Node.js (server-side) and MongoDB (database management system).
 It allows tennis enthusiasts to explore tennis clubs, join theme, browse available courts, select preferred time slots, and secure their reservations with just a few clicks.
 
+🌐 **[Live preview](https://tennishub-5978b.web.app/)**
+
 ## Table of Contents
 
 - [Features](#features)
@@ -64,6 +66,12 @@ The application have:
 - **Express**
 - **MongoDB (Mongoose)**
 - **Moment.js**
+
+## Deployment
+
+- **Firebase Hosting**
+- **Firebase Functions**
+- **MongoDB Atlas**
 
 ## Installation
 

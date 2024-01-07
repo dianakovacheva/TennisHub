@@ -1,6 +1,7 @@
 import * as request from "../lib/request";
+import baseApiUrl from "./baseApiUrl";
 
-const userBaseUrl = "http://localhost:3000/api/auth";
+const userBaseUrl = `${baseApiUrl}/auth`;
 
 // Register
 export const register = (firstName, lastName, email, password) => {

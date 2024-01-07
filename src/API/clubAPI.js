@@ -1,6 +1,7 @@
 import * as request from "../lib/request";
+import baseApiUrl from "./baseApiUrl";
 
-const clubBaseURL = "http://localhost:3000/api/club";
+const clubBaseURL = `${baseApiUrl}/club`;
 
 // Create club
 export const createClub = async ({
@@ -137,7 +138,7 @@ export const getCourtById = async (courtId) => {
 export const getClubComments = async (clubId) => {
   try {
     const clubComments = await request.get(
-      `http://localhost:3000/api/comments/club/${clubId}`
+      `${baseApiUrl}/comments/club/${clubId}`
     );
 
     return clubComments;
