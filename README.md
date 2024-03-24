@@ -7,6 +7,11 @@ It allows tennis enthusiasts to explore tennis clubs, join theme, browse availab
 
 **<a href="https://tennishub-5978b.web.app/" target="_blank">🌐 Live preview</a>**
 
+### Test user
+
+- Email: petrov@gmail.com
+- Password: 12345678
+
 ## Table of Contents
 
 - [Features](#features)
